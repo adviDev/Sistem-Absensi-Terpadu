@@ -13,6 +13,9 @@ public class ruangan {
     private static String namaRuangan;
     private static int kapasitas;
 
+    public ruangan() {
+    }
+
     public ruangan(String idRuangan, String namaRuangan, int kapasitas) {
         this.idRuangan=idRuangan;
         this.namaRuangan=namaRuangan;

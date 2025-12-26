@@ -15,6 +15,9 @@ public class sesiAbsensi {
     private static String waktuMulai;
     private static String idRuanganAktual;
 
+    public sesiAbsensi() {
+    }
+
     public sesiAbsensi(int idSesi, int idJadwal, String tanggal, String waktuMulai, String idRuanganAktual) {
         this.idSesi = idSesi;
         this.idJadwal=idJadwal;

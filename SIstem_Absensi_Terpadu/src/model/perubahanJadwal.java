@@ -17,6 +17,9 @@ public class perubahanJadwal {
     private static String idRuanganBaru;
     private static String status;
 
+    public perubahanJadwal() {
+    }
+
     public perubahanJadwal(int idPerubahan, int idJadwal, String tanggalBaru, String jamMulaiBaru,String jamSelesaiBaru, String idRuanganBaru, String status) {
         this.idPerubahan=idPerubahan;
         this.idJadwal=idJadwal;

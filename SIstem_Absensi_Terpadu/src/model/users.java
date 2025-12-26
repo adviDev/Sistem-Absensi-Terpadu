@@ -62,5 +62,8 @@ public class users {
     public static void setIsActive(boolean isActive) {
         users.isActive = isActive;
     }
+
+    public users() {
+    }
     
 }

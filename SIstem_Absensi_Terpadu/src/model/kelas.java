@@ -14,6 +14,9 @@ public class kelas {
     private static int semesterTingkat;
     private static int idTahun;
 
+    public kelas() {
+    }
+
     public kelas(int idKelas, String namaKelas, int semesterTingkat, int idTahun) {
         this.idKelas = idKelas;
         this.namaKelas = namaKelas;

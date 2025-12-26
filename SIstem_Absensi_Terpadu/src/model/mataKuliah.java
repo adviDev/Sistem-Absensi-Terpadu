@@ -4,6 +4,10 @@ public class mataKuliah {
     private static String namaMK; //nama mata kuliah
     private static int sks;
     private static int semesterPaket;
+
+    public mataKuliah() {
+    }
+    
     public mataKuliah(String kodeMK, String namaMK, int sks, int semesterPaket){
         this.kodeMK = kodeMK;
         this.namaMK = namaMK;

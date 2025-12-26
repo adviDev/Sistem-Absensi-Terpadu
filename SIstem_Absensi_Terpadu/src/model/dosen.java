@@ -2,6 +2,10 @@ package model;
 public class dosen {
     private static String nip;
     private static String namaDosen;
+
+    public dosen() {
+    }
+    
     public dosen(String nip, String namaDosen){
         this.nip = nip;
         this.namaDosen = namaDosen;

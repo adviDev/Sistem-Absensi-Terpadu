@@ -14,6 +14,9 @@ public class detailAbsensi {
     private static String nim;
     private static String statusKehadiran;
     private static String waktuScan;
+
+    public detailAbsensi() {
+    }
     
     public detailAbsensi(int idDetail,int idSesi,String nim,String statusKehadiran,String waktuScan) {
         this.idDetail = idDetail;

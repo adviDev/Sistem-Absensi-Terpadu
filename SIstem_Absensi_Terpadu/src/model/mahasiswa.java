@@ -3,6 +3,11 @@ public class mahasiswa {
     private String nim;
     private String nama;
     private int angkatan;
+
+    public mahasiswa() {
+    }
+    
+    
     public mahasiswa(String nim, String nama,int angkatan){
         this.nim = nim;
         this.nama = nama;

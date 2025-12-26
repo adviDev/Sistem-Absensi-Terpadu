@@ -13,6 +13,9 @@ public class tahunAkademik {
     private static String namaSemester;
     private static int isActive;
 
+    public tahunAkademik() {
+    }
+
     public tahunAkademik(int idTahun, String namaSemester,int isActive) {
         this.idTahun=idTahun;
         this.namaSemester=namaSemester;

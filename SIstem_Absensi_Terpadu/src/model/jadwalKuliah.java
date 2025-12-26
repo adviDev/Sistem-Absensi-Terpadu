@@ -18,6 +18,9 @@ public class jadwalKuliah {
     private static String jamMulai;
     private static String jamSelesai;
 
+    public jadwalKuliah() {
+    }
+
     public jadwalKuliah(int idJadwal,int idKelas,String kodeMK, String nipDosen,String idRuangan,String hari, String jamMulai,String jamSelesai) {
         this.idJadwal = idJadwal;
         this.idKelas = idKelas;

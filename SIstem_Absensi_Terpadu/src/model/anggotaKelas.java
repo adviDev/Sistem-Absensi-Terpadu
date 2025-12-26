@@ -12,6 +12,9 @@ public class anggotaKelas {
     private static int idKelas;
     private static String nim;
 
+    public anggotaKelas() {
+    }
+
     public anggotaKelas(int idKelas, String nim) {
         this.idKelas = idKelas;
         this.nim = nim;
