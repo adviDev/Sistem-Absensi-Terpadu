@@ -10,19 +10,19 @@ package model;
  */
 public class jadwalKuliah {
     // variabel default dalam tabel
-    private static int idJadwal;
-    private static int idKelas;
-    private static String kodeMK;
-    private static String nipDosen;
-    private static String idRuangan;
-    private static String hari;
-    private static String jamMulai;
-    private static String jamSelesai;
+    private int idJadwal;
+    private int idKelas;
+    private String kodeMK;
+    private String nipDosen;
+    private String idRuangan;
+    private String hari;
+    private String jamMulai;
+    private String jamSelesai;
     // variabel tambahan(display)
-    private static String namaDosen;
-    private static String namaMk;
-    private static String namaRuangan;
-    private static String namaKelas;
+    private String namaDosen;
+    private String namaMk;
+    private String namaRuangan;
+    private String namaKelas;
     public jadwalKuliah() {
     }
 
@@ -37,102 +37,101 @@ public class jadwalKuliah {
         this.jamSelesai=jamSelesai;
     }
 
-    public static int getIdJadwal() {
+    public int getIdJadwal() {
         return idJadwal;
     }
 
-    public static void setIdJadwal(int idJadwal) {
-        jadwalKuliah.idJadwal = idJadwal;
+    public void setIdJadwal(int idJadwal) {
+        this.idJadwal = idJadwal;
     }
 
-    public static int getIdKelas() {
+    public int getIdKelas() {
         return idKelas;
     }
 
-    public static void setIdKelas(int idKelas) {
-        jadwalKuliah.idKelas = idKelas;
+    public void setIdKelas(int idKelas) {
+        this.idKelas = idKelas;
     }
 
-    public static String getKodeMK() {
+    public String getKodeMK() {
         return kodeMK;
     }
 
-    public static void setKodeMK(String kodeMK) {
-        jadwalKuliah.kodeMK = kodeMK;
+    public void setKodeMK(String kodeMK) {
+        this.kodeMK = kodeMK;
     }
 
-    public static String getNipDosen() {
+    public String getNipDosen() {
         return nipDosen;
     }
 
-    public static void setNipDosen(String nipDosen) {
-        jadwalKuliah.nipDosen = nipDosen;
+    public void setNipDosen(String nipDosen) {
+        this.nipDosen = nipDosen;
     }
 
-    public static String getIdRuangan() {
+    public String getIdRuangan() {
         return idRuangan;
     }
 
-    public static void setIdRuangan(String idRuangan) {
-        jadwalKuliah.idRuangan = idRuangan;
+    public void setIdRuangan(String idRuangan) {
+        this.idRuangan = idRuangan;
     }
 
-    public static String getHari() {
+    public String getHari() {
         return hari;
     }
 
-    public static void setHari(String hari) {
-        jadwalKuliah.hari = hari;
+    public void setHari(String hari) {
+        this.hari = hari;
     }
 
-    public static String getJamMulai() {
+    public String getJamMulai() {
         return jamMulai;
     }
 
-    public static void setJamMulai(String jamMulai) {
-        jadwalKuliah.jamMulai = jamMulai;
+    public void setJamMulai(String jamMulai) {
+        this.jamMulai = jamMulai;
     }
 
-    public static String getJamSelesai() {
+    public String getJamSelesai() {
         return jamSelesai;
     }
 
-    public static void setJamSelesai(String jamSelesai) {
-        jadwalKuliah.jamSelesai = jamSelesai;
+    public void setJamSelesai(String jamSelesai) {
+        this.jamSelesai = jamSelesai;
     }
 
-    public static String getNamaDosen() {
+    public String getNamaDosen() {
         return namaDosen;
     }
 
-    public static void setNamaDosen(String namaDosen) {
-        jadwalKuliah.namaDosen = namaDosen;
+    public void setNamaDosen(String namaDosen) {
+        this.namaDosen = namaDosen;
     }
 
-    public static String getNamaMk() {
+    public String getNamaMk() {
         return namaMk;
     }
 
-    public static void setNamaMk(String namaMk) {
-        jadwalKuliah.namaMk = namaMk;
+    public void setNamaMk(String namaMk) {
+        this.namaMk = namaMk;
     }
 
-    public static String getNamaRuangan() {
+    public String getNamaRuangan() {
         return namaRuangan;
     }
 
-    public static void setNamaRuangan(String namaRuangan) {
-        jadwalKuliah.namaRuangan = namaRuangan;
+    public void setNamaRuangan(String namaRuangan) {
+        this.namaRuangan = namaRuangan;
     }
 
-    public static String getNamaKelas() {
+    public String getNamaKelas() {
         return namaKelas;
     }
 
-    public static void setNamaKelas(String namaKelas) {
-        jadwalKuliah.namaKelas = namaKelas;
+    public void setNamaKelas(String namaKelas) {
+        this.namaKelas = namaKelas;
     }
-    
-    
+
     
 }
