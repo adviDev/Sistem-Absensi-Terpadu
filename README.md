@@ -22,11 +22,11 @@ Aplikasi desktop berbasis Java untuk pengelolaan administrasi akademik kampus de
 
 1.  **Clone Repositori**
     ```bash
-    git clone [https://github.com/username-anda/sistem-absensi-terpadu.git](https://github.com/username-anda/sistem-absensi-terpadu.git)
+    git clone [https://github.com/adviDev/sistem-absensi-terpadu.git](https://github.com/adviDev/sistem-absensi-terpadu.git)
     ```
 2.  **Import Database**
     * Buka phpMyAdmin atau tool database lainnya.
-    * Buat database baru dengan nama `db_absensi_paket`.
+    * Buat database baru dengan nama `db_presensi_terpadu`.
     * Import file `database.sql` yang ada di folder `sql/` (Pastikan Anda menyertakan file SQL Anda nanti).
 3.  **Konfigurasi Koneksi**
     * Buka file `src/com/kampus/app/config/Koneksi.java`.
@@ -36,6 +36,3 @@ Aplikasi desktop berbasis Java untuk pengelolaan administrasi akademik kampus de
 
 ## 📝 Status Proyek
 Proyek ini dikembangkan sebagai bagian dari studi kasus pengembangan aplikasi Java Desktop dengan koneksi database MySQL Native.
-
----
-**Dibuat oleh:** [Nama Anda]
