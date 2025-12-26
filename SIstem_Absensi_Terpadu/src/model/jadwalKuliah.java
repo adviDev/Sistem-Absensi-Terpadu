@@ -9,6 +9,7 @@ package model;
  * @author user
  */
 public class jadwalKuliah {
+    // variabel default dalam tabel
     private static int idJadwal;
     private static int idKelas;
     private static String kodeMK;
@@ -17,7 +18,11 @@ public class jadwalKuliah {
     private static String hari;
     private static String jamMulai;
     private static String jamSelesai;
-
+    // variabel tambahan(display)
+    private static String namaDosen;
+    private static String namaMk;
+    private static String namaRuangan;
+    private static String namaKelas;
     public jadwalKuliah() {
     }
 
@@ -94,6 +99,38 @@ public class jadwalKuliah {
 
     public static void setJamSelesai(String jamSelesai) {
         jadwalKuliah.jamSelesai = jamSelesai;
+    }
+
+    public static String getNamaDosen() {
+        return namaDosen;
+    }
+
+    public static void setNamaDosen(String namaDosen) {
+        jadwalKuliah.namaDosen = namaDosen;
+    }
+
+    public static String getNamaMk() {
+        return namaMk;
+    }
+
+    public static void setNamaMk(String namaMk) {
+        jadwalKuliah.namaMk = namaMk;
+    }
+
+    public static String getNamaRuangan() {
+        return namaRuangan;
+    }
+
+    public static void setNamaRuangan(String namaRuangan) {
+        jadwalKuliah.namaRuangan = namaRuangan;
+    }
+
+    public static String getNamaKelas() {
+        return namaKelas;
+    }
+
+    public static void setNamaKelas(String namaKelas) {
+        jadwalKuliah.namaKelas = namaKelas;
     }
     
     
