@@ -9,8 +9,8 @@ package model;
  * @author user
  */
 public class anggotaKelas {
-    private static int idKelas;
-    private static String nim;
+    private int idKelas;
+    private String nim;
 
     public anggotaKelas() {
     }
@@ -20,21 +20,22 @@ public class anggotaKelas {
         this.nim = nim;
     }
 
-    public static int getIdKelas() {
+    public int getIdKelas() {
         return idKelas;
     }
 
-    public static void setIdKelas(int idKelas) {
-        anggotaKelas.idKelas = idKelas;
+    public void setIdKelas(int idKelas) {
+        this.idKelas = idKelas;
     }
 
-    public static String getNim() {
+    public String getNim() {
         return nim;
     }
 
-    public static void setNim(String nim) {
-        anggotaKelas.nim = nim;
+    public void setNim(String nim) {
+        this.nim = nim;
     }
-    
+
+
     
 }

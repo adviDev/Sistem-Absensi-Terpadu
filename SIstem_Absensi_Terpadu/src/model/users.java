@@ -9,12 +9,15 @@ package model;
  * @author user
  */
 public class users {
-    private static int idUser;
-    private static String username;
-    private static String password;
-    private static String role;
-    private static boolean isActive;
+    private int idUser;
+    private String username;
+    private String password;
+    private String role;
+    private boolean isActive;
 
+    public users() {
+    }
+    
     public users(int idUser,String username,String password, String role, boolean isActive) {
         this.idUser=idUser;
         this.username=username;
@@ -23,47 +26,44 @@ public class users {
         this.isActive=isActive;
     }
 
-    public static int getIdUser() {
+    public int getIdUser() {
         return idUser;
     }
 
-    public static void setIdUser(int idUser) {
-        users.idUser = idUser;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
-    public static String getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public static void setUsername(String username) {
-        users.username = username;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public static String getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public static void setPassword(String password) {
-        users.password = password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public static String getRole() {
+    public String getRole() {
         return role;
     }
 
-    public static void setRole(String role) {
-        users.role = role;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public static boolean isIsActive() {
+    public boolean isIsActive() {
         return isActive;
     }
 
-    public static void setIsActive(boolean isActive) {
-        users.isActive = isActive;
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
     }
 
-    public users() {
-    }
-    
 }

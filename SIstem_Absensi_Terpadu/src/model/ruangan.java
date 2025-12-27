@@ -9,9 +9,9 @@ package model;
  * @author user
  */
 public class ruangan {
-    private static String idRuangan;
-    private static String namaRuangan;
-    private static int kapasitas;
+    private String idRuangan;
+    private String namaRuangan;
+    private int kapasitas;
 
     public ruangan() {
     }
@@ -22,28 +22,29 @@ public class ruangan {
         this.kapasitas=kapasitas;
     }
 
-    public static String getIdRuangan() {
+    public String getIdRuangan() {
         return idRuangan;
     }
 
-    public static void setIdRuangan(String idRuangan) {
-        ruangan.idRuangan = idRuangan;
+    public void setIdRuangan(String idRuangan) {
+        this.idRuangan = idRuangan;
     }
 
-    public static String getNamaRuangan() {
+    public String getNamaRuangan() {
         return namaRuangan;
     }
 
-    public static void setNamaRuangan(String namaRuangan) {
-        ruangan.namaRuangan = namaRuangan;
+    public void setNamaRuangan(String namaRuangan) {
+        this.namaRuangan = namaRuangan;
     }
 
-    public static int getKapasitas() {
+    public int getKapasitas() {
         return kapasitas;
     }
 
-    public static void setKapasitas(int kapasitas) {
-        ruangan.kapasitas = kapasitas;
+    public void setKapasitas(int kapasitas) {
+        this.kapasitas = kapasitas;
     }
+
     
 }

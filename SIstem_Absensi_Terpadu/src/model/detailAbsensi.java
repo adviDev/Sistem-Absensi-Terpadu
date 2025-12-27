@@ -9,11 +9,11 @@ package model;
  * @author user
  */
 public class detailAbsensi {
-    private static int idDetail;
-    private static int idSesi;
-    private static String nim;
-    private static String statusKehadiran;
-    private static String waktuScan;
+    private int idDetail;
+    private int idSesi;
+    private String nim;
+    private String statusKehadiran;
+    private String waktuScan;
 
     public detailAbsensi() {
     }
@@ -27,46 +27,46 @@ public class detailAbsensi {
         
     }
 
-    public static int getIdDetail() {
+    public int getIdDetail() {
         return idDetail;
     }
 
-    public static void setIdDetail(int idDetail) {
-        detailAbsensi.idDetail = idDetail;
+    public void setIdDetail(int idDetail) {
+        this.idDetail = idDetail;
     }
 
-    public static int getIdSesi() {
+    public int getIdSesi() {
         return idSesi;
     }
 
-    public static void setIdSesi(int idSesi) {
-        detailAbsensi.idSesi = idSesi;
+    public void setIdSesi(int idSesi) {
+        this.idSesi = idSesi;
     }
 
-    public static String getNim() {
+    public String getNim() {
         return nim;
     }
 
-    public static void setNim(String nim) {
-        detailAbsensi.nim = nim;
+    public void setNim(String nim) {
+        this.nim = nim;
     }
 
-    public static String getStatusKehadiran() {
+    public String getStatusKehadiran() {
         return statusKehadiran;
     }
 
-    public static void setStatusKehadiran(String statusKehadiran) {
-        detailAbsensi.statusKehadiran = statusKehadiran;
+    public void setStatusKehadiran(String statusKehadiran) {
+        this.statusKehadiran = statusKehadiran;
     }
 
-    public static String getWaktuScan() {
+    public String getWaktuScan() {
         return waktuScan;
     }
 
-    public static void setWaktuScan(String waktuScan) {
-        detailAbsensi.waktuScan = waktuScan;
+    public void setWaktuScan(String waktuScan) {
+        this.waktuScan = waktuScan;
     }
-    
+
     
 
 
