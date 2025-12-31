@@ -9,9 +9,9 @@ package model;
  * @author user
  */
 public class tahunAkademik {
-    private static int idTahun;
-    private static String namaSemester;
-    private static int isActive;
+    private int idTahun;
+    private String namaSemester;
+    private int isActive;
 
     public tahunAkademik() {
     }
@@ -22,28 +22,29 @@ public class tahunAkademik {
         this.isActive=isActive;
     }
 
-    public static int getIdTahun() {
+    public int getIdTahun() {
         return idTahun;
     }
 
-    public static void setIdTahun(int idTahun) {
-        tahunAkademik.idTahun = idTahun;
+    public void setIdTahun(int idTahun) {
+        this.idTahun = idTahun;
     }
 
-    public static String getNamaSemester() {
+    public String getNamaSemester() {
         return namaSemester;
     }
 
-    public static void setNamaSemester(String namaSemester) {
-        tahunAkademik.namaSemester = namaSemester;
+    public void setNamaSemester(String namaSemester) {
+        this.namaSemester = namaSemester;
     }
 
-    public static int getIsActive() {
+    public int getIsActive() {
         return isActive;
     }
 
-    public static void setIsActive(int isActive) {
-        tahunAkademik.isActive = isActive;
+    public void setIsActive(int isActive) {
+        this.isActive = isActive;
     }
+
     
 }

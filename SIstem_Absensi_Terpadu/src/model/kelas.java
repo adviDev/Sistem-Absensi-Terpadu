@@ -9,10 +9,10 @@ package model;
  * @author user
  */
 public class kelas {
-    private static int idKelas;
-    private static String namaKelas;
-    private static int semesterTingkat;
-    private static int idTahun;
+    private int idKelas;
+    private String namaKelas;
+    private int semesterTingkat;
+    private int idTahun;
 
     public kelas() {
     }
@@ -24,38 +24,38 @@ public class kelas {
         this.idTahun = idTahun;
     }
 
-
-
-    public static int getIdKelas() {
+    public int getIdKelas() {
         return idKelas;
     }
 
-    public static String getNamaKelas() {
+    public void setIdKelas(int idKelas) {
+        this.idKelas = idKelas;
+    }
+
+    public String getNamaKelas() {
         return namaKelas;
     }
 
-    public static int getSemesterTingkat() {
+    public void setNamaKelas(String namaKelas) {
+        this.namaKelas = namaKelas;
+    }
+
+    public int getSemesterTingkat() {
         return semesterTingkat;
     }
 
-    public static int getIdTahun() {
+    public void setSemesterTingkat(int semesterTingkat) {
+        this.semesterTingkat = semesterTingkat;
+    }
+
+    public int getIdTahun() {
         return idTahun;
     }
 
-    public static void setIdKelas(int idKelas) {
-        kelas.idKelas = idKelas;
+    public void setIdTahun(int idTahun) {
+        this.idTahun = idTahun;
     }
 
-    public static void setNamaKelas(String namaKelas) {
-        kelas.namaKelas = namaKelas;
-    }
 
-    public static void setSemesterTingkat(int semesterTingkat) {
-        kelas.semesterTingkat = semesterTingkat;
-    }
 
-    public static void setIdTahun(int idTahun) {
-        kelas.idTahun = idTahun;
-    }
-    
 }

@@ -1,9 +1,9 @@
 package model;
 public class mataKuliah {
-    private static String kodeMK; //kode mata kuliah
-    private static String namaMK; //nama mata kuliah
-    private static int sks;
-    private static int semesterPaket;
+    private String kodeMK; //kode mata kuliah
+    private String namaMK; //nama mata kuliah
+    private int sks;
+    private int semesterPaket;
 
     public mataKuliah() {
     }
@@ -14,26 +14,39 @@ public class mataKuliah {
         this.sks = sks;
         this.semesterPaket = semesterPaket;
     }
-    public String getKodeMK(){return kodeMK;}
-    public String getNamaMK(){return namaMK;}
-    public int getSks(){return sks;}
-    public int getSemesterPaket(){return semesterPaket;}
 
-    public static void setKodeMK(String kodeMK) {
-        mataKuliah.kodeMK = kodeMK;
+    public String getKodeMK() {
+        return kodeMK;
     }
 
-    public static void setNamaMK(String namaMK) {
-        mataKuliah.namaMK = namaMK;
+    public void setKodeMK(String kodeMK) {
+        this.kodeMK = kodeMK;
     }
 
-    public static void setSks(int sks) {
-        mataKuliah.sks = sks;
+    public String getNamaMK() {
+        return namaMK;
     }
 
-    public static void setSemesterPaket(int semesterPaket) {
-        mataKuliah.semesterPaket = semesterPaket;
+    public void setNamaMK(String namaMK) {
+        this.namaMK = namaMK;
     }
+
+    public int getSks() {
+        return sks;
+    }
+
+    public void setSks(int sks) {
+        this.sks = sks;
+    }
+
+    public int getSemesterPaket() {
+        return semesterPaket;
+    }
+
+    public void setSemesterPaket(int semesterPaket) {
+        this.semesterPaket = semesterPaket;
+    }
+
     
     
 }

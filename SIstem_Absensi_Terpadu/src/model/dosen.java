@@ -1,7 +1,7 @@
 package model;
 public class dosen {
-    private static String nip;
-    private static String namaDosen;
+    private String nip;
+    private String namaDosen;
 
     public dosen() {
     }
@@ -10,15 +10,22 @@ public class dosen {
         this.nip = nip;
         this.namaDosen = namaDosen;
     }
-    public String getNip(){return nip;}
-    public String getNamaDosen(){return namaDosen;}
 
-    public static void setNip(String nip) {
-        dosen.nip = nip;
+    public String getNip() {
+        return nip;
     }
 
-    public static void setNamaDosen(String namaDosen) {
-        dosen.namaDosen = namaDosen;
+    public void setNip(String nip) {
+        this.nip = nip;
     }
+
+    public String getNamaDosen() {
+        return namaDosen;
+    }
+
+    public void setNamaDosen(String namaDosen) {
+        this.namaDosen = namaDosen;
+    }
+
     
 }
