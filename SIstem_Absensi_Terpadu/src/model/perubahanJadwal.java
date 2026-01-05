@@ -9,13 +9,13 @@ package model;
  * @author user
  */
 public class perubahanJadwal {
-    private static int idPerubahan;
-    private static int idJadwal;
-    private static String tanggalBaru;
-    private static String jamMulaiBaru;
-    private static String jamSelesaiBaru;
-    private static String idRuanganBaru;
-    private static String status;
+    private int idPerubahan;
+    private int idJadwal;
+    private String tanggalBaru;
+    private String jamMulaiBaru;
+    private String jamSelesaiBaru;
+    private String idRuanganBaru;
+    private String status;
 
     public perubahanJadwal() {
     }
@@ -30,60 +30,60 @@ public class perubahanJadwal {
         this.status=status;
     }
 
-    public static int getIdPerubahan() {
+    public int getIdPerubahan() {
         return idPerubahan;
     }
 
-    public static void setIdPerubahan(int idPerubahan) {
-        perubahanJadwal.idPerubahan = idPerubahan;
+    public void setIdPerubahan(int idPerubahan) {
+        this.idPerubahan = idPerubahan;
     }
 
-    public static int getIdJadwal() {
+    public int getIdJadwal() {
         return idJadwal;
     }
 
-    public static void setIdJadwal(int idJadwal) {
-        perubahanJadwal.idJadwal = idJadwal;
+    public void setIdJadwal(int idJadwal) {
+        this.idJadwal = idJadwal;
     }
 
-    public static String getTanggalBaru() {
+    public String getTanggalBaru() {
         return tanggalBaru;
     }
 
-    public static void setTanggalBaru(String tanggalBaru) {
-        perubahanJadwal.tanggalBaru = tanggalBaru;
+    public void setTanggalBaru(String tanggalBaru) {
+        this.tanggalBaru = tanggalBaru;
     }
 
-    public static String getJamMulaiBaru() {
+    public String getJamMulaiBaru() {
         return jamMulaiBaru;
     }
 
-    public static void setJamMulaiBaru(String jamMulaiBaru) {
-        perubahanJadwal.jamMulaiBaru = jamMulaiBaru;
+    public void setJamMulaiBaru(String jamMulaiBaru) {
+        this.jamMulaiBaru = jamMulaiBaru;
     }
 
-    public static String getJamSelesaiBaru() {
+    public String getJamSelesaiBaru() {
         return jamSelesaiBaru;
     }
 
-    public static void setJamSelesaiBaru(String jamSelesaiBaru) {
-        perubahanJadwal.jamSelesaiBaru = jamSelesaiBaru;
+    public void setJamSelesaiBaru(String jamSelesaiBaru) {
+        this.jamSelesaiBaru = jamSelesaiBaru;
     }
 
-    public static String getIdRuanganBaru() {
+    public String getIdRuanganBaru() {
         return idRuanganBaru;
     }
 
-    public static void setIdRuanganBaru(String idRuanganBaru) {
-        perubahanJadwal.idRuanganBaru = idRuanganBaru;
+    public void setIdRuanganBaru(String idRuanganBaru) {
+        this.idRuanganBaru = idRuanganBaru;
     }
 
-    public static String getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public static void setStatus(String status) {
-        perubahanJadwal.status = status;
+    public void setStatus(String status) {
+        this.status = status;
     }
-    
+
     }
