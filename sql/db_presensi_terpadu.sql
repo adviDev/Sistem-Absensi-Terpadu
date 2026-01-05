@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 26, 2025 at 07:20 AM
+-- Generation Time: Dec 26, 2025 at 03:35 PM
 -- Server version: 8.0.44
 -- PHP Version: 8.0.30
 
@@ -32,6 +32,102 @@ CREATE TABLE `anggota_kelas` (
   `nim` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `anggota_kelas`
+--
+
+INSERT INTO `anggota_kelas` (`id_kelas`, `nim`) VALUES
+(1, '230001'),
+(1, '230002'),
+(1, '230003'),
+(1, '230004'),
+(1, '230005'),
+(1, '230006'),
+(1, '230007'),
+(1, '230008'),
+(1, '230009'),
+(1, '230010'),
+(1, '230011'),
+(1, '230012'),
+(1, '230013'),
+(1, '230014'),
+(1, '230015'),
+(1, '230016'),
+(1, '230017'),
+(1, '230018'),
+(1, '230019'),
+(1, '230020'),
+(1, '230021'),
+(1, '230022'),
+(1, '230023'),
+(1, '230024'),
+(1, '230025'),
+(1, '230026'),
+(1, '230027'),
+(1, '230028'),
+(1, '230029'),
+(1, '230030'),
+(2, '230031'),
+(2, '230032'),
+(2, '230033'),
+(2, '230034'),
+(2, '230035'),
+(2, '230036'),
+(2, '230037'),
+(2, '230038'),
+(2, '230039'),
+(2, '230040'),
+(2, '230041'),
+(2, '230042'),
+(2, '230043'),
+(2, '230044'),
+(2, '230045'),
+(2, '230046'),
+(2, '230047'),
+(2, '230048'),
+(2, '230049'),
+(2, '230050'),
+(2, '230051'),
+(2, '230052'),
+(2, '230053'),
+(2, '230054'),
+(2, '230055'),
+(2, '230056'),
+(2, '230057'),
+(2, '230058'),
+(2, '230059'),
+(2, '230060'),
+(3, '230061'),
+(3, '230062'),
+(3, '230063'),
+(3, '230064'),
+(3, '230065'),
+(3, '230066'),
+(3, '230067'),
+(3, '230068'),
+(3, '230069'),
+(3, '230070'),
+(3, '230071'),
+(3, '230072'),
+(3, '230073'),
+(3, '230074'),
+(3, '230075'),
+(3, '230076'),
+(3, '230077'),
+(3, '230078'),
+(3, '230079'),
+(3, '230080'),
+(3, '230081'),
+(3, '230082'),
+(3, '230083'),
+(3, '230084'),
+(3, '230085'),
+(3, '230086'),
+(3, '230087'),
+(3, '230088'),
+(3, '230089'),
+(3, '230090');
+
 -- --------------------------------------------------------
 
 --
@@ -57,6 +153,22 @@ CREATE TABLE `dosen` (
   `nama_dosen` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `dosen`
+--
+
+INSERT INTO `dosen` (`nip`, `nama_dosen`) VALUES
+('19800101', 'Dosen 1'),
+('19800102', 'Dosen 2'),
+('19800103', 'Dosen 3'),
+('19800104', 'Dosen 4'),
+('19800105', 'Dosen 5'),
+('19800106', 'Dosen 6'),
+('19800107', 'Dosen 7'),
+('19800108', 'Dosen 8'),
+('19800109', 'Dosen 9'),
+('19800110', 'Dosen 10');
+
 -- --------------------------------------------------------
 
 --
@@ -74,6 +186,27 @@ CREATE TABLE `jadwal_kuliah` (
   `jam_selesai` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `jadwal_kuliah`
+--
+
+INSERT INTO `jadwal_kuliah` (`id_jadwal`, `id_kelas`, `kode_mk`, `nip_dosen`, `id_ruangan`, `hari`, `jam_mulai`, `jam_selesai`) VALUES
+(1, 1, 'TIF301', '19800101', '1', 'Senin', '08:00:00', '10:30:00'),
+(2, 1, 'TIF302', '19800102', '2', 'Selasa', '10:30:00', '13:00:00'),
+(3, 1, 'TIF303', '19800103', '3', 'Rabu', '08:00:00', '10:30:00'),
+(4, 1, 'TIF304', '19800104', '4', 'Kamis', '13:00:00', '15:30:00'),
+(5, 1, 'TIF305', '19800105', '5', 'Jumat', '08:00:00', '10:30:00'),
+(6, 2, 'TIF301', '19800101', '1', 'Senin', '10:30:00', '13:00:00'),
+(7, 2, 'TIF302', '19800102', '2', 'Selasa', '13:00:00', '15:30:00'),
+(8, 2, 'TIF306', '19800106', '6', 'Rabu', '08:00:00', '10:30:00'),
+(9, 2, 'TIF307', '19800107', '7', 'Kamis', '10:30:00', '12:30:00'),
+(10, 2, 'TIF303', '19800103', '3', 'Jumat', '13:00:00', '15:30:00'),
+(11, 3, 'TIF304', '19800104', '4', 'Senin', '13:00:00', '15:30:00'),
+(12, 3, 'TIF305', '19800105', '5', 'Selasa', '08:00:00', '10:30:00'),
+(13, 3, 'TIF306', '19800106', '6', 'Rabu', '13:00:00', '15:30:00'),
+(14, 3, 'TIF308', '19800108', '8', 'Kamis', '08:00:00', '10:30:00'),
+(15, 3, 'TIF302', '19800102', '2', 'Jumat', '10:30:00', '13:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -87,6 +220,15 @@ CREATE TABLE `kelas` (
   `id_tahun` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `kelas`
+--
+
+INSERT INTO `kelas` (`id_kelas`, `nama_kelas`, `semester_tingkat`, `id_tahun`) VALUES
+(1, '3A-TIF', 3, 1),
+(2, '3B-TIF', 3, 1),
+(3, '3C-TIF', 3, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -98,6 +240,102 @@ CREATE TABLE `mahasiswa` (
   `nama_mahasiswa` varchar(100) DEFAULT NULL,
   `angkatan` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `mahasiswa`
+--
+
+INSERT INTO `mahasiswa` (`nim`, `nama_mahasiswa`, `angkatan`) VALUES
+('230001', 'Mahasiswa 3A-01', 2023),
+('230002', 'Mahasiswa 3A-02', 2023),
+('230003', 'Mahasiswa 3A-03', 2023),
+('230004', 'Mahasiswa 3A-04', 2023),
+('230005', 'Mahasiswa 3A-05', 2023),
+('230006', 'Mahasiswa 3A-06', 2023),
+('230007', 'Mahasiswa 3A-07', 2023),
+('230008', 'Mahasiswa 3A-08', 2023),
+('230009', 'Mahasiswa 3A-09', 2023),
+('230010', 'Mahasiswa 3A-10', 2023),
+('230011', 'Mahasiswa 3A-11', 2023),
+('230012', 'Mahasiswa 3A-12', 2023),
+('230013', 'Mahasiswa 3A-13', 2023),
+('230014', 'Mahasiswa 3A-14', 2023),
+('230015', 'Mahasiswa 3A-15', 2023),
+('230016', 'Mahasiswa 3A-16', 2023),
+('230017', 'Mahasiswa 3A-17', 2023),
+('230018', 'Mahasiswa 3A-18', 2023),
+('230019', 'Mahasiswa 3A-19', 2023),
+('230020', 'Mahasiswa 3A-20', 2023),
+('230021', 'Mahasiswa 3A-21', 2023),
+('230022', 'Mahasiswa 3A-22', 2023),
+('230023', 'Mahasiswa 3A-23', 2023),
+('230024', 'Mahasiswa 3A-24', 2023),
+('230025', 'Mahasiswa 3A-25', 2023),
+('230026', 'Mahasiswa 3A-26', 2023),
+('230027', 'Mahasiswa 3A-27', 2023),
+('230028', 'Mahasiswa 3A-28', 2023),
+('230029', 'Mahasiswa 3A-29', 2023),
+('230030', 'Mahasiswa 3A-30', 2023),
+('230031', 'Mahasiswa 3B-01', 2023),
+('230032', 'Mahasiswa 3B-02', 2023),
+('230033', 'Mahasiswa 3B-03', 2023),
+('230034', 'Mahasiswa 3B-04', 2023),
+('230035', 'Mahasiswa 3B-05', 2023),
+('230036', 'Mahasiswa 3B-06', 2023),
+('230037', 'Mahasiswa 3B-07', 2023),
+('230038', 'Mahasiswa 3B-08', 2023),
+('230039', 'Mahasiswa 3B-09', 2023),
+('230040', 'Mahasiswa 3B-10', 2023),
+('230041', 'Mahasiswa 3B-11', 2023),
+('230042', 'Mahasiswa 3B-12', 2023),
+('230043', 'Mahasiswa 3B-13', 2023),
+('230044', 'Mahasiswa 3B-14', 2023),
+('230045', 'Mahasiswa 3B-15', 2023),
+('230046', 'Mahasiswa 3B-16', 2023),
+('230047', 'Mahasiswa 3B-17', 2023),
+('230048', 'Mahasiswa 3B-18', 2023),
+('230049', 'Mahasiswa 3B-19', 2023),
+('230050', 'Mahasiswa 3B-20', 2023),
+('230051', 'Mahasiswa 3B-21', 2023),
+('230052', 'Mahasiswa 3B-22', 2023),
+('230053', 'Mahasiswa 3B-23', 2023),
+('230054', 'Mahasiswa 3B-24', 2023),
+('230055', 'Mahasiswa 3B-25', 2023),
+('230056', 'Mahasiswa 3B-26', 2023),
+('230057', 'Mahasiswa 3B-27', 2023),
+('230058', 'Mahasiswa 3B-28', 2023),
+('230059', 'Mahasiswa 3B-29', 2023),
+('230060', 'Mahasiswa 3B-30', 2023),
+('230061', 'Mahasiswa 3C-01', 2023),
+('230062', 'Mahasiswa 3C-02', 2023),
+('230063', 'Mahasiswa 3C-03', 2023),
+('230064', 'Mahasiswa 3C-04', 2023),
+('230065', 'Mahasiswa 3C-05', 2023),
+('230066', 'Mahasiswa 3C-06', 2023),
+('230067', 'Mahasiswa 3C-07', 2023),
+('230068', 'Mahasiswa 3C-08', 2023),
+('230069', 'Mahasiswa 3C-09', 2023),
+('230070', 'Mahasiswa 3C-10', 2023),
+('230071', 'Mahasiswa 3C-11', 2023),
+('230072', 'Mahasiswa 3C-12', 2023),
+('230073', 'Mahasiswa 3C-13', 2023),
+('230074', 'Mahasiswa 3C-14', 2023),
+('230075', 'Mahasiswa 3C-15', 2023),
+('230076', 'Mahasiswa 3C-16', 2023),
+('230077', 'Mahasiswa 3C-17', 2023),
+('230078', 'Mahasiswa 3C-18', 2023),
+('230079', 'Mahasiswa 3C-19', 2023),
+('230080', 'Mahasiswa 3C-20', 2023),
+('230081', 'Mahasiswa 3C-21', 2023),
+('230082', 'Mahasiswa 3C-22', 2023),
+('230083', 'Mahasiswa 3C-23', 2023),
+('230084', 'Mahasiswa 3C-24', 2023),
+('230085', 'Mahasiswa 3C-25', 2023),
+('230086', 'Mahasiswa 3C-26', 2023),
+('230087', 'Mahasiswa 3C-27', 2023),
+('230088', 'Mahasiswa 3C-28', 2023),
+('230089', 'Mahasiswa 3C-29', 2023),
+('230090', 'Mahasiswa 3C-30', 2023);
 
 -- --------------------------------------------------------
 
@@ -111,6 +349,20 @@ CREATE TABLE `mata_kuliah` (
   `sks` int DEFAULT NULL,
   `semester_paket` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `mata_kuliah`
+--
+
+INSERT INTO `mata_kuliah` (`kode_mk`, `nama_mk`, `sks`, `semester_paket`) VALUES
+('TIF301', 'Pemrograman Berorientasi Objek', 3, 3),
+('TIF302', 'Basis Data Lanjut', 3, 3),
+('TIF303', 'Jaringan Komputer', 3, 3),
+('TIF304', 'Sistem Operasi', 3, 3),
+('TIF305', 'Rekayasa Perangkat Lunak', 3, 3),
+('TIF306', 'Pemrograman Web', 3, 3),
+('TIF307', 'Interaksi Manusia dan Komputer', 2, 3),
+('TIF308', 'Kecerdasan Buatan', 3, 3);
 
 -- --------------------------------------------------------
 
@@ -140,6 +392,22 @@ CREATE TABLE `ruangan` (
   `kapasitas` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `ruangan`
+--
+
+INSERT INTO `ruangan` (`id_ruangan`, `nama_ruangan`, `kapasitas`) VALUES
+('1', 'Ruang 101', 40),
+('10', 'Aula', 100),
+('2', 'Ruang 102', 40),
+('3', 'Ruang 103', 40),
+('4', 'Ruang 104', 40),
+('5', 'Ruang 105', 40),
+('6', 'Lab 1', 30),
+('7', 'Lab 2', 30),
+('8', 'Lab 3', 30),
+('9', 'Lab 4', 30);
+
 -- --------------------------------------------------------
 
 --
@@ -165,6 +433,13 @@ CREATE TABLE `tahun_akademik` (
   `nama_semester` varchar(20) DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `tahun_akademik`
+--
+
+INSERT INTO `tahun_akademik` (`id_tahun`, `nama_semester`, `is_active`) VALUES
+(1, '2025/2026', 1);
 
 -- --------------------------------------------------------
 
@@ -283,13 +558,13 @@ ALTER TABLE `detail_absensi`
 -- AUTO_INCREMENT for table `jadwal_kuliah`
 --
 ALTER TABLE `jadwal_kuliah`
-  MODIFY `id_jadwal` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jadwal` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id_kelas` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kelas` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `perubahan_jadwal`
@@ -307,7 +582,7 @@ ALTER TABLE `sesi_absensi`
 -- AUTO_INCREMENT for table `tahun_akademik`
 --
 ALTER TABLE `tahun_akademik`
-  MODIFY `id_tahun` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tahun` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
