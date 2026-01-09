@@ -158,9 +158,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnrekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrekapActionPerformed
         // TODO add your handling code here:
-        Coba2 co2 = new Coba2(); // panggil form absen
-        co2.setVisible(true);           // tampilkan
-        this.dispose();
     }//GEN-LAST:event_btnrekapActionPerformed
 
     private void btnAbsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbsenActionPerformed
