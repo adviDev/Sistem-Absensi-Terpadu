@@ -1,5 +1,7 @@
 package view;
 
+import javax.swing.JOptionPane;
+
 
 
 public class Regis extends javax.swing.JFrame {
@@ -179,6 +181,11 @@ public class Regis extends javax.swing.JFrame {
         btnlogin.setBackground(new java.awt.Color(204, 204, 204));
         btnlogin.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         btnlogin.setText("Daftar Sekarang");
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnloginActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnlogin);
         btnlogin.setBounds(310, 290, 180, 31);
 
@@ -262,6 +269,35 @@ public class Regis extends javax.swing.JFrame {
     private void jpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jpassActionPerformed
+
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
+        // TODO add your handling code here:
+        String  user = JtxtUser.getText();
+        String pass = new String(jpass1.getPassword());
+        String confPass = new String(jpass.getPassword());
+        
+        if (user.isEmpty()||user.equals("Enter Username")||pass.isEmpty()||pass.equals("Enter Password")) {
+            JOptionPane.showMessageDialog(this, "Username / Password tidak boleh kosong!");
+        }
+        
+        if (!pass.equals(confPass)) {
+            JOptionPane.showMessageDialog(this, "Password dan Konfirmasi Password harus sama!");
+        }
+        
+        dao.UserDAO dao = new dao.UserDAO();
+        
+        // default role = mahasiswa
+        boolean isSuccess = dao.register(user, pass, "mahasiswa");
+        if (isSuccess) {
+            JOptionPane.showMessageDialog(this, "Registrasi Berhasil");
+            this.dispose();
+            new Login().setVisible(true);
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Registrasi Gagal!");
+            
+        }
+    }//GEN-LAST:event_btnloginActionPerformed
 
     /**
      * @param args the command line arguments
