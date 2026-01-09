@@ -1,13 +1,23 @@
 package view;
+
+import java.awt.Cursor;
+
 public class Login extends javax.swing.JFrame {
 
     public Login() {
         setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
-  
-
+        initButtonregis(); 
+        this.setLocationRelativeTo(null);
     }
+    private void initButtonregis(){
+    btnregis.setBorder(null);
+    btnregis.setContentAreaFilled(false);
+    btnregis.setFocusPainted(false);
+    btnregis.setCursor(new Cursor(Cursor.HAND_CURSOR));    
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,6 +46,7 @@ public class Login extends javax.swing.JFrame {
         btnlogin = new javax.swing.JButton();
         btnbatal = new javax.swing.JButton();
         btnregis = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -52,7 +63,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(617, 17, 32, 29);
+        jLabel1.setBounds(610, 10, 32, 29);
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -110,7 +121,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         jPanel2.add(jPanel1);
-        jPanel1.setBounds(0, 0, 160, 405);
+        jPanel1.setBounds(0, 0, 160, 440);
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -170,7 +181,7 @@ public class Login extends javax.swing.JFrame {
         btnlogin.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnlogin.setText("Login");
         jPanel2.add(btnlogin);
-        btnlogin.setBounds(299, 298, 72, 26);
+        btnlogin.setBounds(300, 280, 72, 26);
 
         btnbatal.setBackground(new java.awt.Color(204, 204, 204));
         btnbatal.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -181,22 +192,33 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnbatal);
-        btnbatal.setBounds(483, 298, 72, 26);
+        btnbatal.setBounds(460, 280, 72, 26);
 
-        btnregis.setBackground(new java.awt.Color(204, 204, 204));
+        btnregis.setBackground(new java.awt.Color(102, 102, 102));
+        btnregis.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnregis.setText("Register");
+        btnregis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregisActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnregis);
-        btnregis.setBounds(389, 299, 80, 26);
+        btnregis.setBounds(440, 320, 100, 26);
+
+        jLabel11.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel11.setText("don't have an account?");
+        jPanel2.add(jLabel11);
+        jLabel11.setBounds(310, 320, 160, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
         );
 
         pack();
@@ -231,6 +253,10 @@ public class Login extends javax.swing.JFrame {
         JtxtUser.setText("");
         jpass.setText("");
     }//GEN-LAST:event_btnbatalActionPerformed
+
+    private void btnregisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregisActionPerformed
+ 
+    }//GEN-LAST:event_btnregisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,6 +307,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btnregis;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
