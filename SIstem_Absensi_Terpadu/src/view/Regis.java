@@ -24,7 +24,7 @@ public class Regis extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jRadioButton1 = new javax.swing.JRadioButton();
+        bgmahasiswa = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -43,8 +43,8 @@ public class Regis extends javax.swing.JFrame {
         jpass1 = new javax.swing.JPasswordField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-
-        jRadioButton1.setText("jRadioButton1");
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -64,7 +64,7 @@ public class Regis extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Harap Login Terlebih Dahulu");
+        jLabel2.setText("Silahkan Buat Akun");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.add(jLabel2);
         jLabel2.setBounds(263, 41, 273, 24);
@@ -187,7 +187,7 @@ public class Regis extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnlogin);
-        btnlogin.setBounds(310, 290, 180, 31);
+        btnlogin.setBounds(310, 330, 180, 31);
 
         jpass1.setBackground(new java.awt.Color(102, 102, 102));
         jpass1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -216,6 +216,18 @@ public class Regis extends javax.swing.JFrame {
         jPanel2.add(jLabel12);
         jLabel12.setBounds(250, 200, 89, 24);
 
+        bgmahasiswa.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jRadioButton2.setText("Dosen");
+        jPanel2.add(jRadioButton2);
+        jRadioButton2.setBounds(260, 280, 65, 24);
+
+        bgmahasiswa.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jRadioButton1.setText("Mahasiswa");
+        jPanel2.add(jRadioButton1);
+        jRadioButton1.setBounds(430, 280, 98, 24);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -224,7 +236,7 @@ public class Regis extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -351,6 +363,7 @@ public class Regis extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JtxtUser;
+    private javax.swing.ButtonGroup bgmahasiswa;
     private javax.swing.JButton btnlogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -367,6 +380,7 @@ public class Regis extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JPasswordField jpass;
     private javax.swing.JPasswordField jpass1;
     // End of variables declaration//GEN-END:variables
