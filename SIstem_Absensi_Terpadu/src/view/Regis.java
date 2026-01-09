@@ -62,7 +62,7 @@ public class Regis extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Harap Login Terlebih Dahulu");
+        jLabel2.setText("Silahkan Buat Akun");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.add(jLabel2);
         jLabel2.setBounds(263, 41, 273, 24);
