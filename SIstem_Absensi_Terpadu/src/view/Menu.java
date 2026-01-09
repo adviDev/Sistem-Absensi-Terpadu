@@ -27,6 +27,8 @@ public class Menu extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        btnrekap = new javax.swing.JButton();
+        btnAbsen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -106,6 +108,36 @@ public class Menu extends javax.swing.JFrame {
         jPanel2.add(jLabel6);
         jLabel6.setBounds(240, 110, 84, 24);
 
+        btnrekap.setBackground(new java.awt.Color(102, 102, 102));
+        btnrekap.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnrekap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/icons8-notebook-50.png"))); // NOI18N
+        btnrekap.setText("Rekap Absen");
+        btnrekap.setToolTipText("");
+        btnrekap.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnrekap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnrekap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnrekapActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnrekap);
+        btnrekap.setBounds(440, 150, 160, 60);
+
+        btnAbsen.setBackground(new java.awt.Color(102, 102, 102));
+        btnAbsen.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnAbsen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/icons8-notebook-50.png"))); // NOI18N
+        btnAbsen.setText("  Absen");
+        btnAbsen.setToolTipText("");
+        btnAbsen.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnAbsen.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAbsen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbsenActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAbsen);
+        btnAbsen.setBounds(240, 150, 130, 60);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,6 +155,17 @@ public class Menu extends javax.swing.JFrame {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
     System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void btnrekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrekapActionPerformed
+        // TODO add your handling code here:
+        Coba2 co2 = new Coba2(); // panggil form absen
+        co2.setVisible(true);           // tampilkan
+        this.dispose();
+    }//GEN-LAST:event_btnrekapActionPerformed
+
+    private void btnAbsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbsenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAbsenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,6 +210,8 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAbsen;
+    private javax.swing.JButton btnrekap;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
