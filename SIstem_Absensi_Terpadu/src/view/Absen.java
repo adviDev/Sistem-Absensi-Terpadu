@@ -174,7 +174,7 @@ public class Absen extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minggu 1", "Minggu 2", "MInggu 3", "MInggu 4", "MInggu 5", "MInggu 6", "MInggu 7", "MInggu 8", "MInggu 9", "MInggu 10", "MInggu 11", "MInggu 12", "MInggu 13 ", "MInggu 14", "MInggu 15", "MInggu 16", "MInggu 17" }));
         jPanel2.add(jComboBox1);
-        jComboBox1.setBounds(350, 110, 108, 25);
+        jComboBox1.setBounds(350, 110, 107, 25);
 
         jButton1.setText("Sumbit");
         jPanel2.add(jButton1);
