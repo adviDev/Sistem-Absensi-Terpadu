@@ -1,4 +1,14 @@
 package view;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import view.Menu;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import config.koneksi;
+import javax.swing.table.DefaultTableModel;
 
 import java.awt.Cursor;
 
@@ -180,6 +190,11 @@ public class Login extends javax.swing.JFrame {
         btnlogin.setBackground(new java.awt.Color(204, 204, 204));
         btnlogin.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnlogin.setText("Login");
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnloginActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnlogin);
         btnlogin.setBounds(310, 280, 72, 26);
 
@@ -260,6 +275,41 @@ public class Login extends javax.swing.JFrame {
     reg.setVisible(true);           // tampilkan
     this.dispose(); 
     }//GEN-LAST:event_btnregisActionPerformed
+
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
+        // TODO add your handling code here:
+       String username = JtxtUser.getText();
+    String password = new String(jpass.getPassword());
+
+   if (username.isEmpty() || password.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Username dan Password tidak boleh kosong!");
+        return;
+    }
+
+    // 3. Panggil fungsi login dari UserDAO
+    dao.UserDAO userDAO = new dao.UserDAO();
+    model.users userAktif = userDAO.login(username, password);
+
+    // 4. Cek hasil
+    if (userAktif != null) {
+        JOptionPane.showMessageDialog(this, "Selamat Datang, " + userAktif.getUsername());
+        
+        // Alihkan ke GUI lain berdasarkan role
+        String role = userAktif.getRole();
+        
+        if (role.equalsIgnoreCase("admin")) {
+            
+        } else if (role.equalsIgnoreCase("dosen")) {
+            new Menu().setVisible(true);
+        } else if (role.equalsIgnoreCase("mahasiswa")) {
+            new Rekap().setVisible(true);
+        }
+
+        this.dispose(); // Tutup form login
+    } else {
+        JOptionPane.showMessageDialog(this, "Login Gagal! Username/Password salah atau akun tidak aktif.");
+    }
+    }//GEN-LAST:event_btnloginActionPerformed
 
     /**
      * @param args the command line arguments
