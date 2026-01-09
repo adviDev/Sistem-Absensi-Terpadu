@@ -143,7 +143,7 @@ public class Regis extends javax.swing.JFrame {
             }
         });
         jPanel2.add(JtxtUser);
-        JtxtUser.setBounds(250, 140, 330, 27);
+        JtxtUser.setBounds(250, 140, 360, 27);
 
         jpass.setBackground(new java.awt.Color(102, 102, 102));
         jpass.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -156,6 +156,11 @@ public class Regis extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jpassFocusLost(evt);
+            }
+        });
+        jpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jpassActionPerformed(evt);
             }
         });
         jPanel2.add(jpass);
@@ -243,12 +248,20 @@ public class Regis extends javax.swing.JFrame {
     }//GEN-LAST:event_jpassFocusLost
 
     private void jpass1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpass1FocusGained
-        // TODO add your handling code here:
+
+    if (jpass1.getText().equals("Enter Password")) {
+    jpass1.setText("");  } 
     }//GEN-LAST:event_jpass1FocusGained
 
     private void jpass1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpass1FocusLost
         // TODO add your handling code here:
+    if (jpass1.getText().isEmpty()) {
+    jpass1.setText("Enter Password");}
     }//GEN-LAST:event_jpass1FocusLost
+
+    private void jpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpassActionPerformed
 
     /**
      * @param args the command line arguments

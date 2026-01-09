@@ -256,7 +256,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnbatalActionPerformed
 
     private void btnregisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregisActionPerformed
- 
+    Regis reg = new Regis(); // panggil form absen
+    reg.setVisible(true);           // tampilkan
+    this.dispose(); 
     }//GEN-LAST:event_btnregisActionPerformed
 
     /**
