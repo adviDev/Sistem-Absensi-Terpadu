@@ -14,6 +14,7 @@ public class sesiAbsensi {
     private String tanggal;
     private String waktuMulai;
     private String idRuanganAktual;
+    private String status;
 
     public sesiAbsensi() {
     }
@@ -64,6 +65,14 @@ public class sesiAbsensi {
 
     public void setIdRuanganAktual(String idRuanganAktual) {
         this.idRuanganAktual = idRuanganAktual;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     
