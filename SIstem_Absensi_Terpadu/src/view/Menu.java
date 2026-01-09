@@ -141,11 +141,13 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void btnabsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnabsenActionPerformed
-        // TODO add your handling code here:
+    new Absen().setVisible(true);
+    this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_btnabsenActionPerformed
 
     private void btnrekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrekapActionPerformed
-        // TODO add your handling code here:
+    new Rekap().setVisible(true);
+    this.dispose();     // TODO add your handling code here:
     }//GEN-LAST:event_btnrekapActionPerformed
 
     private void btnhomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhomeActionPerformed
