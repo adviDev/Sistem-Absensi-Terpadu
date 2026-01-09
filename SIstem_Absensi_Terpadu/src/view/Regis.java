@@ -1,22 +1,16 @@
 package view;
 
-import java.awt.Cursor;
 
-public class Login extends javax.swing.JFrame {
 
-    public Login() {
+public class Regis extends javax.swing.JFrame {
+
+    public Regis() {
         setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
-        initButtonregis(); 
-        this.setLocationRelativeTo(null);
     }
-    private void initButtonregis(){
-    btnregis.setBorder(null);
-    btnregis.setContentAreaFilled(false);
-    btnregis.setFocusPainted(false);
-    btnregis.setCursor(new Cursor(Cursor.HAND_CURSOR));    
-    }
+   
+    
     
 
     /**
@@ -44,9 +38,9 @@ public class Login extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btnlogin = new javax.swing.JButton();
-        btnbatal = new javax.swing.JButton();
-        btnregis = new javax.swing.JButton();
+        jpass1 = new javax.swing.JPasswordField();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -127,13 +121,13 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/user.png"))); // NOI18N
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(267, 141, 30, 30);
+        jLabel3.setBounds(200, 140, 30, 30);
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/lock.png"))); // NOI18N
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(267, 224, 41, 30);
+        jLabel5.setBounds(410, 220, 41, 30);
 
         JtxtUser.setBackground(new java.awt.Color(102, 102, 102));
         JtxtUser.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -149,7 +143,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(JtxtUser);
-        JtxtUser.setBounds(314, 141, 202, 27);
+        JtxtUser.setBounds(250, 140, 360, 27);
 
         jpass.setBackground(new java.awt.Color(102, 102, 102));
         jpass.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -164,52 +158,56 @@ public class Login extends javax.swing.JFrame {
                 jpassFocusLost(evt);
             }
         });
+        jpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jpassActionPerformed(evt);
+            }
+        });
         jPanel2.add(jpass);
-        jpass.setBounds(314, 224, 202, 30);
+        jpass.setBounds(450, 220, 160, 30);
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel6.setText("Username");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(314, 111, 89, 24);
+        jLabel6.setBounds(250, 110, 89, 24);
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel7.setText("Password");
+        jLabel7.setText("Confrim Password");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(314, 188, 89, 24);
+        jLabel7.setBounds(450, 200, 150, 24);
 
         btnlogin.setBackground(new java.awt.Color(204, 204, 204));
-        btnlogin.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnlogin.setText("Login");
+        btnlogin.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        btnlogin.setText("Daftar Sekarang");
         jPanel2.add(btnlogin);
-        btnlogin.setBounds(310, 280, 72, 26);
+        btnlogin.setBounds(310, 290, 180, 31);
 
-        btnbatal.setBackground(new java.awt.Color(204, 204, 204));
-        btnbatal.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnbatal.setText("Batal");
-        btnbatal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnbatalActionPerformed(evt);
+        jpass1.setBackground(new java.awt.Color(102, 102, 102));
+        jpass1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jpass1.setForeground(new java.awt.Color(204, 204, 204));
+        jpass1.setText("Enter Password");
+        jpass1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
+        jpass1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jpass1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jpass1FocusLost(evt);
             }
         });
-        jPanel2.add(btnbatal);
-        btnbatal.setBounds(450, 280, 72, 26);
+        jPanel2.add(jpass1);
+        jpass1.setBounds(250, 220, 130, 30);
 
-        btnregis.setBackground(new java.awt.Color(102, 102, 102));
-        btnregis.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        btnregis.setText("Register");
-        btnregis.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(102, 102, 102)));
-        btnregis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnregisActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnregis);
-        btnregis.setBounds(450, 320, 100, 26);
-
-        jLabel11.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel11.setText("don't have an account?");
+        jLabel11.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/lock.png"))); // NOI18N
         jPanel2.add(jLabel11);
-        jLabel11.setBounds(310, 320, 160, 30);
+        jLabel11.setBounds(200, 220, 41, 30);
+
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel12.setText("Password");
+        jPanel2.add(jLabel12);
+        jLabel12.setBounds(250, 200, 89, 24);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -249,17 +247,21 @@ public class Login extends javax.swing.JFrame {
     jpass.setText("Enter Password");}
     }//GEN-LAST:event_jpassFocusLost
 
-    private void btnbatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbatalActionPerformed
-        // TODO add your handling code here:
-        JtxtUser.setText("");
-        jpass.setText("");
-    }//GEN-LAST:event_btnbatalActionPerformed
+    private void jpass1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpass1FocusGained
 
-    private void btnregisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregisActionPerformed
-    Regis reg = new Regis(); // panggil form absen
-    reg.setVisible(true);           // tampilkan
-    this.dispose(); 
-    }//GEN-LAST:event_btnregisActionPerformed
+    if (jpass1.getText().equals("Enter Password")) {
+    jpass1.setText("");  } 
+    }//GEN-LAST:event_jpass1FocusGained
+
+    private void jpass1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpass1FocusLost
+        // TODO add your handling code here:
+    if (jpass1.getText().isEmpty()) {
+    jpass1.setText("Enter Password");}
+    }//GEN-LAST:event_jpass1FocusLost
+
+    private void jpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,14 +280,22 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Regis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Regis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Regis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Regis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -298,19 +308,18 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Regis().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JtxtUser;
-    private javax.swing.JButton btnbatal;
     private javax.swing.JButton btnlogin;
-    private javax.swing.JButton btnregis;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -323,5 +332,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JPasswordField jpass;
+    private javax.swing.JPasswordField jpass1;
     // End of variables declaration//GEN-END:variables
 }
