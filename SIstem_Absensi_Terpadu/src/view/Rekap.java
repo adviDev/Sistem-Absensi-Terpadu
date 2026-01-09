@@ -121,17 +121,14 @@ public class Rekap extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Mahasiswa", "H", "I", "A", "S"
+                "NIm", "Nama", "H", "I", "A", "S"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -145,6 +142,7 @@ public class Rekap extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(2).setResizable(false);
             jTable1.getColumnModel().getColumn(3).setResizable(false);
             jTable1.getColumnModel().getColumn(4).setResizable(false);
+            jTable1.getColumnModel().getColumn(5).setResizable(false);
         }
 
         jPanel2.add(jScrollPane1);
@@ -152,13 +150,15 @@ public class Rekap extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("ABSEN");
+        jLabel2.setText("REKAP ABSEN");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(420, 40, 80, 16);
+        jLabel2.setBounds(380, 40, 150, 16);
 
-        jLabel4.setText("jLabel4");
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Masukan NIM");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(280, 90, 38, 16);
+        jLabel4.setBounds(280, 90, 90, 16);
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
