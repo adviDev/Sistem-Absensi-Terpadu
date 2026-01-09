@@ -1,12 +1,28 @@
 package view;
+
+import java.awt.Cursor;
+
 public class Menu extends javax.swing.JFrame {
 
     public Menu() {
         setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
-  
+        initbutton();
+    }
+    private void initbutton(){
 
+    btnrekap.setContentAreaFilled(false);
+    btnrekap.setFocusPainted(false);
+    btnrekap.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
+    btnabsen.setBorder(null);
+    btnabsen.setContentAreaFilled(false);
+    btnabsen.setFocusPainted(false);
+    btnabsen.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
+    btnhome.setBorder(null);
+    btnhome.setContentAreaFilled(false);
+    btnhome.setFocusPainted(false);
+    btnhome.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
     }
 
     /**
@@ -22,13 +38,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        btnhome = new javax.swing.JButton();
+        btnabsen = new javax.swing.JButton();
         btnrekap = new javax.swing.JButton();
-        btnAbsen = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -43,7 +57,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(612, 17, 32, 29);
+        jLabel1.setBounds(630, 20, 32, 29);
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -51,102 +65,75 @@ public class Menu extends javax.swing.JFrame {
         jLabel2.setText("Selamat Datang");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(284, 40, 273, 24);
+        jLabel2.setBounds(310, 40, 273, 24);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(null);
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel4.setText("E - ABSEN");
+        btnhome.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnhome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/home.png"))); // NOI18N
+        btnhome.setText("Home");
+        btnhome.setToolTipText("");
+        btnhome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnhome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnhome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhomeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnhome);
+        btnhome.setBounds(20, 140, 180, 60);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/logopolnep.png"))); // NOI18N
+        btnabsen.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnabsen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/icons8-notebook-50.png"))); // NOI18N
+        btnabsen.setText("Absen");
+        btnabsen.setToolTipText("");
+        btnabsen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnabsen.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnabsen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnabsenActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnabsen);
+        btnabsen.setBounds(20, 250, 180, 60);
 
-        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel9.setText("2025");
-
-        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel10.setText("Informatika");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel10))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(33, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(32, 32, 32))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(jLabel4)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel8)
-                .addGap(56, 56, 56)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
-                .addContainerGap(114, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(jPanel1);
-        jPanel1.setBounds(0, 0, 170, 450);
-
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel6.setText("Pilih Menu");
-        jPanel2.add(jLabel6);
-        jLabel6.setBounds(240, 110, 84, 24);
-
-        btnrekap.setBackground(new java.awt.Color(102, 102, 102));
         btnrekap.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnrekap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/icons8-notebook-50.png"))); // NOI18N
         btnrekap.setText("Rekap Absen");
         btnrekap.setToolTipText("");
-        btnrekap.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnrekap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnrekap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnrekap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnrekapActionPerformed(evt);
             }
         });
-        jPanel2.add(btnrekap);
-        btnrekap.setBounds(440, 150, 160, 60);
+        jPanel1.add(btnrekap);
+        btnrekap.setBounds(20, 330, 180, 60);
 
-        btnAbsen.setBackground(new java.awt.Color(102, 102, 102));
-        btnAbsen.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnAbsen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/icons8-notebook-50.png"))); // NOI18N
-        btnAbsen.setText("  Absen");
-        btnAbsen.setToolTipText("");
-        btnAbsen.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnAbsen.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnAbsen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAbsenActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnAbsen);
-        btnAbsen.setBounds(240, 150, 130, 60);
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel5.setText("E - ABSEN");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(238, 67, 94, 24);
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jLabel3.setText("E - ABSEN");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(60, 70, 90, 24);
+
+        jPanel2.add(jPanel1);
+        jPanel1.setBounds(0, 0, 210, 450);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -156,13 +143,17 @@ public class Menu extends javax.swing.JFrame {
     System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void btnabsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnabsenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnabsenActionPerformed
+
     private void btnrekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrekapActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnrekapActionPerformed
 
-    private void btnAbsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbsenActionPerformed
+    private void btnhomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAbsenActionPerformed
+    }//GEN-LAST:event_btnhomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,15 +198,13 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAbsen;
+    private javax.swing.JButton btnabsen;
+    private javax.swing.JButton btnhome;
     private javax.swing.JButton btnrekap;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
