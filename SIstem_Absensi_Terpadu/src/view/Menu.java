@@ -11,15 +11,12 @@ public class Menu extends javax.swing.JFrame {
         initbutton();
     }
     private void initbutton(){
-
     btnrekap.setContentAreaFilled(false);
     btnrekap.setFocusPainted(false);
     btnrekap.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
-    btnabsen.setBorder(null);
     btnabsen.setContentAreaFilled(false);
     btnabsen.setFocusPainted(false);
     btnabsen.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
-    btnhome.setBorder(null);
     btnhome.setContentAreaFilled(false);
     btnhome.setFocusPainted(false);
     btnhome.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
