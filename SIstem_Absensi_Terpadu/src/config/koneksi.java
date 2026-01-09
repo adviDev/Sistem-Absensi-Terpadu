@@ -15,7 +15,7 @@ public class koneksi {
             try {       
             String url = "jdbc:mysql://localhost/db_presensi_terpadu";
             String usr = "root";
-            String pass = "1234";  
+            String pass = "MUSANGGAMING";  
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(url, usr, pass);
             System.out.println("koneksi berhasil");

@@ -1,5 +1,7 @@
 package view;
 
+import javax.swing.JOptionPane;
+
 
 
 public class Regis extends javax.swing.JFrame {
@@ -282,6 +284,31 @@ public class Regis extends javax.swing.JFrame {
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         // TODO add your handling code here:
+        String  user = JtxtUser.getText();
+        String pass = new String(jpass1.getPassword());
+        String confPass = new String(jpass.getPassword());
+        
+        if (user.isEmpty()||user.equals("Enter Username")||pass.isEmpty()||pass.equals("Enter Password")) {
+            JOptionPane.showMessageDialog(this, "Username / Password tidak boleh kosong!");
+        }
+        
+        if (!pass.equals(confPass)) {
+            JOptionPane.showMessageDialog(this, "Password dan Konfirmasi Password harus sama!");
+        }
+        
+        dao.UserDAO dao = new dao.UserDAO();
+        
+        // default role = mahasiswa
+        boolean isSuccess = dao.register(user, pass, "mahasiswa");
+        if (isSuccess) {
+            JOptionPane.showMessageDialog(this, "Registrasi Berhasil");
+            this.dispose();
+            new Login().setVisible(true);
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Registrasi Gagal!");
+            
+        }
     }//GEN-LAST:event_btnloginActionPerformed
 
     /**
