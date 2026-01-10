@@ -9,11 +9,12 @@ package model;
  * @author user
  */
 public class sesiAbsensi {
-    private static int idSesi;
-    private static int idJadwal;
-    private static String tanggal;
-    private static String waktuMulai;
-    private static String idRuanganAktual;
+    private int idSesi;
+    private int idJadwal;
+    private String tanggal;
+    private String waktuMulai;
+    private String idRuanganAktual;
+    private String status;
 
     public sesiAbsensi() {
     }
@@ -26,44 +27,53 @@ public class sesiAbsensi {
         this.idRuanganAktual=idRuanganAktual;
     }
 
-    public static int getIdSesi() {
+    public int getIdSesi() {
         return idSesi;
     }
 
-    public static void setIdSesi(int idSesi) {
-        sesiAbsensi.idSesi = idSesi;
+    public void setIdSesi(int idSesi) {
+        this.idSesi = idSesi;
     }
 
-    public static int getIdJadwal() {
+    public int getIdJadwal() {
         return idJadwal;
     }
 
-    public static void setIdJadwal(int idJadwal) {
-        sesiAbsensi.idJadwal = idJadwal;
+    public void setIdJadwal(int idJadwal) {
+        this.idJadwal = idJadwal;
     }
 
-    public static String getTanggal() {
+    public String getTanggal() {
         return tanggal;
     }
 
-    public static void setTanggal(String tanggal) {
-        sesiAbsensi.tanggal = tanggal;
+    public void setTanggal(String tanggal) {
+        this.tanggal = tanggal;
     }
 
-    public static String getWaktuMulai() {
+    public String getWaktuMulai() {
         return waktuMulai;
     }
 
-    public static void setWaktuMulai(String waktuMulai) {
-        sesiAbsensi.waktuMulai = waktuMulai;
+    public void setWaktuMulai(String waktuMulai) {
+        this.waktuMulai = waktuMulai;
     }
 
-    public static String getIdRuanganAktual() {
+    public String getIdRuanganAktual() {
         return idRuanganAktual;
     }
 
-    public static void setIdRuanganAktual(String idRuanganAktual) {
-        sesiAbsensi.idRuanganAktual = idRuanganAktual;
+    public void setIdRuanganAktual(String idRuanganAktual) {
+        this.idRuanganAktual = idRuanganAktual;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     
 }
