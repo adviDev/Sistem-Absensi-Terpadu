@@ -83,6 +83,7 @@ public class MenuDosen extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Tanggal = new javax.swing.JLabel();
+        btnMulaiSesi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -97,7 +98,7 @@ public class MenuDosen extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(630, 20, 32, 29);
+        jLabel1.setBounds(660, 10, 32, 29);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -163,7 +164,7 @@ public class MenuDosen extends javax.swing.JFrame {
         Tanggal2.setText("Jadwal Hari ini :");
         Tanggal2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.add(Tanggal2);
-        Tanggal2.setBounds(250, 140, 320, 24);
+        Tanggal2.setBounds(240, 120, 320, 24);
 
         Lnama.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         Lnama.setForeground(new java.awt.Color(255, 255, 255));
@@ -171,7 +172,7 @@ public class MenuDosen extends javax.swing.JFrame {
         Lnama.setText("Selamat Datang");
         Lnama.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.add(Lnama);
-        Lnama.setBounds(250, 60, 380, 24);
+        Lnama.setBounds(240, 50, 380, 24);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -201,7 +202,7 @@ public class MenuDosen extends javax.swing.JFrame {
         }
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(250, 170, 410, 210);
+        jScrollPane1.setBounds(240, 150, 410, 210);
 
         Tanggal.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         Tanggal.setForeground(new java.awt.Color(255, 255, 255));
@@ -209,7 +210,16 @@ public class MenuDosen extends javax.swing.JFrame {
         Tanggal.setText("tanggal");
         Tanggal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.add(Tanggal);
-        Tanggal.setBounds(250, 90, 320, 24);
+        Tanggal.setBounds(240, 80, 320, 24);
+
+        btnMulaiSesi.setText("Mulai Sesi Absensi");
+        btnMulaiSesi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMulaiSesiActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnMulaiSesi);
+        btnMulaiSesi.setBounds(380, 370, 140, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -263,6 +273,10 @@ public class MenuDosen extends javax.swing.JFrame {
     private void btnhomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnhomeActionPerformed
+
+    private void btnMulaiSesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMulaiSesiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMulaiSesiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -318,6 +332,7 @@ public class MenuDosen extends javax.swing.JFrame {
     private javax.swing.JLabel Lnama;
     private javax.swing.JLabel Tanggal;
     private javax.swing.JLabel Tanggal2;
+    private javax.swing.JButton btnMulaiSesi;
     private javax.swing.JButton btnabsen;
     private javax.swing.JButton btnhome;
     private javax.swing.JButton btnrekap;
