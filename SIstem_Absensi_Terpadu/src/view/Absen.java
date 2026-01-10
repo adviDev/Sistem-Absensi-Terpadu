@@ -272,12 +272,12 @@ public class Absen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnabsenActionPerformed
 
     private void btnrekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrekapActionPerformed
-    new Rekap().setVisible(true);
+    new RekapDosen().setVisible(true);
     this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_btnrekapActionPerformed
 
     private void btnhomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhomeActionPerformed
-    new Menu().setVisible(true);
+    new MenuDosen().setVisible(true);
     this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_btnhomeActionPerformed
 
