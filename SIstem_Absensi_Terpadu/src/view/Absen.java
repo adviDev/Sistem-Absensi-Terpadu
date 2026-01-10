@@ -77,6 +77,7 @@ public class Absen extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -196,7 +197,7 @@ public class Absen extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jCheckBox1);
-        jCheckBox1.setBounds(540, 180, 170, 20);
+        jCheckBox1.setBounds(620, 70, 170, 20);
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -211,9 +212,9 @@ public class Absen extends javax.swing.JFrame {
         jLabel4.setBounds(260, 110, 80, 19);
 
         cbperte.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        cbperte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minggu 1", "Minggu 11", "MInggu 112", "Minggu 2", "MInggu 3", "MInggu 4", "MInggu 5", "MInggu 6", "MInggu 7", "MInggu 8", "MInggu 9", "MInggu 10", "MInggu 11", "MInggu 12", "MInggu 13 ", "MInggu 14", "MInggu 15", "MInggu 16", "MInggu 17" }));
+        cbperte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minggu 1", "Minggu 2", "MInggu 3", "MInggu 4", "MInggu 5", "MInggu 6", "MInggu 7", "MInggu 8", "MInggu 9", "MInggu 10", "MInggu 11", "MInggu 12", "MInggu 13 ", "MInggu 14", "MInggu 15", "MInggu 16", "MInggu 17" }));
         jPanel2.add(cbperte);
-        cbperte.setBounds(350, 110, 112, 25);
+        cbperte.setBounds(350, 110, 108, 25);
 
         jButton1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jButton1.setText("Sumbit");
@@ -246,6 +247,11 @@ public class Absen extends javax.swing.JFrame {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pemograman Visual", "Sistem Operasi", "Manajemen & Organisasi", "Agama", "Bahasa Inggris", "Metode Numerik" }));
         jPanel2.add(jComboBox2);
         jComboBox2.setBounds(580, 110, 170, 25);
+
+        jButton2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jButton2.setText("Tampilkan");
+        jPanel2.add(jButton2);
+        jButton2.setBounds(470, 170, 95, 26);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -345,6 +351,7 @@ public class Absen extends javax.swing.JFrame {
     private javax.swing.JButton btnrekap;
     private javax.swing.JComboBox<String> cbperte;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
