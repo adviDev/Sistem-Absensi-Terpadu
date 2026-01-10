@@ -45,6 +45,8 @@ public class Rekap extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnsumbit = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -59,7 +61,7 @@ public class Rekap extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(630, 20, 32, 29);
+        jLabel1.setBounds(820, 20, 32, 29);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -117,8 +119,9 @@ public class Rekap extends javax.swing.JFrame {
         jLabel3.setBounds(60, 70, 90, 24);
 
         jPanel2.add(jPanel1);
-        jPanel1.setBounds(0, 0, 210, 450);
+        jPanel1.setBounds(0, 0, 210, 490);
 
+        jTable1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -146,43 +149,54 @@ public class Rekap extends javax.swing.JFrame {
         }
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(260, 220, 380, 110);
+        jScrollPane1.setBounds(350, 250, 380, 160);
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("REKAP ABSEN");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(380, 40, 150, 16);
+        jLabel2.setBounds(480, 40, 150, 16);
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Pilih Nama");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(280, 90, 90, 16);
+        jLabel4.setBounds(280, 100, 90, 16);
 
+        btnsumbit.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnsumbit.setText("Sumbit");
         jPanel2.add(btnsumbit);
-        btnsumbit.setBounds(410, 160, 72, 23);
+        btnsumbit.setBounds(500, 210, 72, 23);
 
         jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
         jPanel2.add(jComboBox1);
-        jComboBox1.setBounds(360, 90, 160, 25);
+        jComboBox1.setBounds(360, 100, 160, 25);
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Jadwal");
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(560, 100, 60, 19);
+
+        jComboBox2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pemograman Visual", "Sistem Operasi", "Manajemen & Organisasi", "Agama", "Bahasa Inggris", "Metode Numerik" }));
+        jPanel2.add(jComboBox2);
+        jComboBox2.setBounds(630, 100, 170, 25);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
         );
 
         pack();
@@ -283,11 +297,13 @@ public class Rekap extends javax.swing.JFrame {
     private javax.swing.JButton btnrekap;
     private javax.swing.JButton btnsumbit;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
