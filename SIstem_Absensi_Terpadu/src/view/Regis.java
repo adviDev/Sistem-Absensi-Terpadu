@@ -284,7 +284,12 @@ public class Regis extends javax.swing.JFrame {
         String  user = JtxtUser.getText();
         String pass = new String(jpass1.getPassword());
         String confPass = new String(jpass.getPassword());
-        
+        String role = "";
+        if (jRadioDosen.isSelected()) {
+            role="dosen";
+        } else if (jRadioMahasiswa.isSelected()) {
+            role="mahasiswa";
+        }
         if (user.isEmpty()||user.equals("Enter Username")||pass.isEmpty()||pass.equals("Enter Password")) {
             JOptionPane.showMessageDialog(this, "Username / Password tidak boleh kosong!");
         }
@@ -296,7 +301,7 @@ public class Regis extends javax.swing.JFrame {
         dao.UserDAO dao = new dao.UserDAO();
         
         // default role = mahasiswa
-        boolean isSuccess = dao.register(user, pass, "mahasiswa");
+        boolean isSuccess = dao.register(user, pass, role);
         if (isSuccess) {
             JOptionPane.showMessageDialog(this, "Registrasi Berhasil");
             this.dispose();
