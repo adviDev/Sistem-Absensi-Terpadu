@@ -17,6 +17,7 @@ public class MenuDosen extends javax.swing.JFrame {
         Tanggal.setText(getTanggalFormatLengkap());
         this.nipsession = nip;
         aturIdentitasDosen();
+        tampilJadwalOtomatis();
         
     }
     private void initbutton(){
@@ -36,6 +37,30 @@ public class MenuDosen extends javax.swing.JFrame {
         Lnama.setText("Selamat Datang, "+nama);
         
     }
+    private void tampilJadwalOtomatis() {
+    // 1. Ambil model tabel dari jTable1
+    javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+    
+    // 2. Bersihkan data lama (reset tabel)
+    model.setRowCount(0);
+    
+    // 3. Ambil NIP session dan Hari ini
+    String hariIni = getHariIniIndo(); // Ini akan mengambil "Senin", "Selasa", dst.
+    
+    // 4. Panggil DAO
+    dosenDAO dao = new dosenDAO();
+    java.util.List<String[]> dataJadwal = dao.getJadwalHarian(nipsession, hariIni);
+    
+    // 5. Looping data dari database ke tabel GUI
+    if (dataJadwal.isEmpty()) {
+        // Opsi: Jika tidak ada jadwal, bisa tambahkan baris kosong atau info
+         model.addRow(new Object[]{"-", "Tidak ada jadwal", "-"});
+    } else {
+        for (String[] row : dataJadwal) {
+            model.addRow(row);
+        }
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -146,14 +171,11 @@ public class MenuDosen extends javax.swing.JFrame {
         Lnama.setText("Selamat Datang");
         Lnama.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.add(Lnama);
-        Lnama.setBounds(250, 60, 160, 24);
+        Lnama.setBounds(250, 60, 380, 24);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Jam", "Mata Kuliah", "Kelas"
@@ -285,11 +307,11 @@ public class MenuDosen extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuDosen("19800101").setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new MenuDosen("19800101").setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
