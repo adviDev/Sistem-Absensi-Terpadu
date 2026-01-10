@@ -31,21 +31,20 @@ public class MenuMahasiswa extends javax.swing.JFrame {
         btnrekap = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        btnsumbit = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setLayout(null);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/icons8-close-32.png"))); // NOI18N
@@ -72,7 +71,7 @@ public class MenuMahasiswa extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnrekap);
-        btnrekap.setBounds(20, 200, 180, 60);
+        btnrekap.setBounds(20, 230, 180, 60);
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel5.setText("E - ABSEN");
@@ -82,10 +81,15 @@ public class MenuMahasiswa extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel3.setText("E - ABSEN");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(60, 70, 90, 24);
+        jLabel3.setBounds(60, 60, 90, 24);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/logopolnep.png"))); // NOI18N
+        jLabel6.setText("jLabel6");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(50, 100, 100, 100);
 
         jPanel2.add(jPanel1);
-        jPanel1.setBounds(0, 0, 210, 490);
+        jPanel1.setBounds(0, 0, 210, 470);
 
         jTable1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -93,11 +97,11 @@ public class MenuMahasiswa extends javax.swing.JFrame {
 
             },
             new String [] {
-                "NIm", "Nama", "H", "I", "A", "S"
+                "Tanggal", "Mata Kuliah", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -109,61 +113,61 @@ public class MenuMahasiswa extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
             jTable1.getColumnModel().getColumn(1).setResizable(false);
             jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
         }
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(350, 250, 380, 160);
+        jScrollPane1.setBounds(250, 190, 590, 250);
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("REKAP ABSEN");
+        jLabel2.setText("Statistik Kehadiran");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(480, 40, 150, 16);
+        jLabel2.setBounds(290, 70, 180, 24);
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Pilih Nama");
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(280, 100, 90, 16);
+        jTextField1.setBackground(new java.awt.Color(51, 153, 255));
+        jTextField1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jTextField1.setText("Sakit :");
+        jPanel2.add(jTextField1);
+        jTextField1.setBounds(660, 100, 100, 40);
 
-        btnsumbit.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnsumbit.setText("Sumbit");
-        jPanel2.add(btnsumbit);
-        btnsumbit.setBounds(500, 210, 72, 23);
-
-        jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jTextField2.setBackground(new java.awt.Color(51, 204, 0));
+        jTextField2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jTextField2.setText("Hadir :");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jTextField2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jComboBox1);
-        jComboBox1.setBounds(360, 100, 160, 25);
+        jPanel2.add(jTextField2);
+        jTextField2.setBounds(330, 100, 100, 40);
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Jadwal");
-        jPanel2.add(jLabel6);
-        jLabel6.setBounds(560, 100, 60, 19);
+        jTextField3.setBackground(new java.awt.Color(204, 51, 0));
+        jTextField3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jTextField3.setText("Alpa :");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextField3);
+        jTextField3.setBounds(550, 100, 100, 40);
 
-        jComboBox2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pemograman Visual", "Sistem Operasi", "Manajemen & Organisasi", "Agama", "Bahasa Inggris", "Metode Numerik" }));
-        jPanel2.add(jComboBox2);
-        jComboBox2.setBounds(630, 100, 170, 25);
+        jTextField4.setBackground(new java.awt.Color(255, 204, 0));
+        jTextField4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jTextField4.setText("Izin :");
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextField4);
+        jTextField4.setBounds(440, 100, 100, 40);
 
-        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Kelas");
-        jPanel2.add(jLabel7);
-        jLabel7.setBounds(280, 160, 37, 19);
-
-        jComboBox3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3A TIF", "3B TIF", "3C TIF", "3D TIF", "3E TIF" }));
-        jPanel2.add(jComboBox3);
-        jComboBox3.setBounds(360, 160, 80, 25);
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Riwayat Absensi Terakhir");
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(250, 170, 240, 24);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,17 +184,25 @@ public class MenuMahasiswa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-    System.exit(0);        // TODO add your handling code here:
+        System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void btnrekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrekapActionPerformed
-    new MenuMahasiswa().setVisible(true);
-    this.dispose();     // TODO add your handling code here:
+        new MenuMahasiswa().setVisible(true);
+        this.dispose();     // TODO add your handling code here:
     }//GEN-LAST:event_btnrekapActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -356,20 +368,19 @@ public class MenuMahasiswa extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnrekap;
-    private javax.swing.JButton btnsumbit;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
