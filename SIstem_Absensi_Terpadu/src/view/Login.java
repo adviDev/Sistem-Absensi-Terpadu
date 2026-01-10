@@ -262,7 +262,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         // TODO add your handling code here:
-               String username = JtxtUser.getText();
+    String username = JtxtUser.getText();
     String password = new String(jpass.getPassword());
 
    if (username.isEmpty() || password.isEmpty()) {
@@ -284,7 +284,7 @@ public class Login extends javax.swing.JFrame {
         if (role.equalsIgnoreCase("admin")) {
             
         } else if (role.equalsIgnoreCase("dosen")) {
-            new MenuDosen().setVisible(true);
+            new MenuDosen(username).setVisible(true);
         } else if (role.equalsIgnoreCase("mahasiswa")) {
             new MenuMahasiswa().setVisible(true);
         }
