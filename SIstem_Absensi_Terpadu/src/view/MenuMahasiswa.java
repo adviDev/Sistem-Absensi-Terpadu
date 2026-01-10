@@ -2,9 +2,9 @@ package view;
 
 import java.awt.Cursor;
 
-public class Rekap extends javax.swing.JFrame {
+public class MenuMahasiswa extends javax.swing.JFrame {
 
-    public Rekap() {
+    public MenuMahasiswa() {
         setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -14,12 +14,6 @@ public class Rekap extends javax.swing.JFrame {
     btnrekap.setContentAreaFilled(false);
     btnrekap.setFocusPainted(false);
     btnrekap.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
-    btnabsen.setContentAreaFilled(false);
-    btnabsen.setFocusPainted(false);
-    btnabsen.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
-    btnhome.setContentAreaFilled(false);
-    btnhome.setFocusPainted(false);
-    btnhome.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
     }
 
     /**
@@ -34,8 +28,6 @@ public class Rekap extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        btnhome = new javax.swing.JButton();
-        btnabsen = new javax.swing.JButton();
         btnrekap = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -47,6 +39,8 @@ public class Rekap extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -66,34 +60,6 @@ public class Rekap extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        btnhome.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnhome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/home.png"))); // NOI18N
-        btnhome.setText("Home");
-        btnhome.setToolTipText("");
-        btnhome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnhome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnhome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnhomeActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnhome);
-        btnhome.setBounds(20, 140, 180, 60);
-
-        btnabsen.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnabsen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/icons8-notebook-50.png"))); // NOI18N
-        btnabsen.setText("Absen");
-        btnabsen.setToolTipText("");
-        btnabsen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnabsen.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnabsen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnabsenActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnabsen);
-        btnabsen.setBounds(20, 250, 180, 60);
-
         btnrekap.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnrekap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/icons8-notebook-50.png"))); // NOI18N
         btnrekap.setText("Rekap Absen");
@@ -106,7 +72,7 @@ public class Rekap extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnrekap);
-        btnrekap.setBounds(20, 330, 180, 60);
+        btnrekap.setBounds(20, 200, 180, 60);
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel5.setText("E - ABSEN");
@@ -168,7 +134,6 @@ public class Rekap extends javax.swing.JFrame {
         jPanel2.add(btnsumbit);
         btnsumbit.setBounds(500, 210, 72, 23);
 
-        jComboBox1.setEditable(true);
         jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +154,17 @@ public class Rekap extends javax.swing.JFrame {
         jPanel2.add(jComboBox2);
         jComboBox2.setBounds(630, 100, 170, 25);
 
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Kelas");
+        jPanel2.add(jLabel7);
+        jLabel7.setBounds(280, 160, 37, 19);
+
+        jComboBox3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3A TIF", "3B TIF", "3C TIF", "3D TIF", "3E TIF" }));
+        jPanel2.add(jComboBox3);
+        jComboBox3.setBounds(360, 160, 80, 25);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -207,20 +183,10 @@ public class Rekap extends javax.swing.JFrame {
     System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel1MouseClicked
 
-    private void btnabsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnabsenActionPerformed
-    new Absen().setVisible(true);
-    this.dispose();         // TODO add your handling code here:
-    }//GEN-LAST:event_btnabsenActionPerformed
-
     private void btnrekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrekapActionPerformed
-    new Rekap().setVisible(true);
+    new MenuMahasiswa().setVisible(true);
     this.dispose();     // TODO add your handling code here:
     }//GEN-LAST:event_btnrekapActionPerformed
-
-    private void btnhomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhomeActionPerformed
-    new Menu().setVisible(true);
-    this.dispose();         // TODO add your handling code here:
-    }//GEN-LAST:event_btnhomeActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
@@ -243,14 +209,110 @@ public class Rekap extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Rekap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Rekap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Rekap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Rekap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -287,24 +349,24 @@ public class Rekap extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Rekap().setVisible(true);
+                new MenuMahasiswa().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnabsen;
-    private javax.swing.JButton btnhome;
     private javax.swing.JButton btnrekap;
     private javax.swing.JButton btnsumbit;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
