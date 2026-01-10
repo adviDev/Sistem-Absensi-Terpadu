@@ -47,7 +47,7 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setLayout(null);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/icons8-close-32.png"))); // NOI18N
@@ -129,7 +129,7 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(jLabel5);
         jLabel5.setBounds(267, 224, 41, 30);
 
-        JtxtUser.setBackground(new java.awt.Color(102, 102, 102));
+        JtxtUser.setBackground(new java.awt.Color(0, 102, 102));
         JtxtUser.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         JtxtUser.setForeground(new java.awt.Color(204, 204, 204));
         JtxtUser.setText("Enter Username");
@@ -145,7 +145,7 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(JtxtUser);
         JtxtUser.setBounds(314, 141, 202, 27);
 
-        jpass.setBackground(new java.awt.Color(102, 102, 102));
+        jpass.setBackground(new java.awt.Color(0, 102, 102));
         jpass.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jpass.setForeground(new java.awt.Color(204, 204, 204));
         jpass.setText("Enter Password");
@@ -193,7 +193,7 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(btnbatal);
         btnbatal.setBounds(450, 280, 72, 26);
 
-        btnregis.setBackground(new java.awt.Color(102, 102, 102));
+        btnregis.setBackground(new java.awt.Color(0, 102, 102));
         btnregis.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnregis.setText("Register");
         btnregis.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(102, 102, 102)));
@@ -284,7 +284,7 @@ public class Login extends javax.swing.JFrame {
         if (role.equalsIgnoreCase("admin")) {
             
         } else if (role.equalsIgnoreCase("dosen")) {
-            new MenuDosen().setVisible(true);
+            new MenuDosen(username).setVisible(true);
         } else if (role.equalsIgnoreCase("mahasiswa")) {
             new MenuMahasiswa().setVisible(true);
         }

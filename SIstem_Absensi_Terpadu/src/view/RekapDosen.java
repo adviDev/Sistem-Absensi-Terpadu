@@ -21,6 +21,12 @@ public class RekapDosen extends javax.swing.JFrame {
     btnhome.setFocusPainted(false);
     btnhome.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
     }
+    
+    private String username;
+    public RekapDosen(String username) {
+    initComponents();
+    this.username = username;
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -220,7 +226,7 @@ public class RekapDosen extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void btnabsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnabsenActionPerformed
-    new Absen().setVisible(true);
+    new RekapDosen(username).setVisible(true);
     this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_btnabsenActionPerformed
 
@@ -230,8 +236,9 @@ public class RekapDosen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnrekapActionPerformed
 
     private void btnhomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhomeActionPerformed
-    new MenuDosen().setVisible(true);
-    this.dispose();         // TODO add your handling code here:
+    MenuDosen menu = new MenuDosen(username);
+    menu.setVisible(true);
+    this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_btnhomeActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
