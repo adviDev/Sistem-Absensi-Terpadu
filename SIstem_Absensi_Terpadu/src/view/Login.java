@@ -1,22 +1,12 @@
 package view;
-
-import java.awt.Cursor;
-
 public class Login extends javax.swing.JFrame {
 
     public Login() {
         setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
-        initButtonregis(); 
-        this.setLocationRelativeTo(null);
     }
-    private void initButtonregis(){
-    btnregis.setBorder(null);
-    btnregis.setContentAreaFilled(false);
-    btnregis.setFocusPainted(false);
-    btnregis.setCursor(new Cursor(Cursor.HAND_CURSOR));    
-    }
+
     
 
     /**
@@ -180,6 +170,11 @@ public class Login extends javax.swing.JFrame {
         btnlogin.setBackground(new java.awt.Color(204, 204, 204));
         btnlogin.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnlogin.setText("Login");
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnloginActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnlogin);
         btnlogin.setBounds(310, 280, 72, 26);
 
@@ -260,6 +255,10 @@ public class Login extends javax.swing.JFrame {
     reg.setVisible(true);           // tampilkan
     this.dispose(); 
     }//GEN-LAST:event_btnregisActionPerformed
+
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnloginActionPerformed
 
     /**
      * @param args the command line arguments

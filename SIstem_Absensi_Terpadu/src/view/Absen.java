@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Cursor;
+import javax.swing.JTable;
 
 public class Absen extends javax.swing.JFrame {
 
@@ -9,6 +10,20 @@ public class Absen extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         initbutton();
+        aturkolom();
+        jTable1.getModel().addTableModelListener(e -> {
+        int row = e.getFirstRow();
+        int col = e.getColumn();
+
+    // kolom H I A S
+        if (col >= 2 && col <= 5) {
+            for (int i = 2; i <= 5; i++) {
+                if (i != col) {
+                jTable1.setValueAt(false, row, i);
+            }
+        }
+    }
+});
     }
     private void initbutton(){
     btnrekap.setContentAreaFilled(false);
@@ -20,6 +35,18 @@ public class Absen extends javax.swing.JFrame {
     btnhome.setContentAreaFilled(false);
     btnhome.setFocusPainted(false);
     btnhome.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
+    }
+    private void aturkolom(){
+    jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+    jTable1.getColumnModel().getColumn(0).setPreferredWidth(100); // NIM
+    jTable1.getColumnModel().getColumn(1).setPreferredWidth(150); // Nama
+
+    // H I A S (kecil & pas)
+    for (int i = 2; i <= 5; i++) {
+        jTable1.getColumnModel().getColumn(i).setPreferredWidth(40);
+        jTable1.getColumnModel().getColumn(i).setMaxWidth(40);
+        jTable1.getColumnModel().getColumn(i).setMinWidth(40);
+    }
     }
 
     /**
@@ -44,8 +71,12 @@ public class Absen extends javax.swing.JFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbperte = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -60,7 +91,7 @@ public class Absen extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(630, 20, 32, 29);
+        jLabel1.setBounds(790, 20, 32, 29);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -118,8 +149,9 @@ public class Absen extends javax.swing.JFrame {
         jLabel3.setBounds(60, 70, 90, 24);
 
         jPanel2.add(jPanel1);
-        jPanel1.setBounds(0, 0, 210, 450);
+        jPanel1.setBounds(0, 0, 210, 490);
 
+        jTable1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -128,9 +160,16 @@ public class Absen extends javax.swing.JFrame {
                 "Nim", "Nama", "H", "I", "A", "S"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -147,7 +186,7 @@ public class Absen extends javax.swing.JFrame {
         }
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(260, 170, 380, 160);
+        jScrollPane1.setBounds(360, 220, 380, 160);
 
         jCheckBox1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jCheckBox1.setText("Tandai Hadir Semua");
@@ -157,13 +196,13 @@ public class Absen extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jCheckBox1);
-        jCheckBox1.setBounds(490, 80, 170, 20);
+        jCheckBox1.setBounds(540, 180, 170, 20);
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ABSEN");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(420, 40, 80, 16);
+        jLabel2.setBounds(510, 40, 80, 16);
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -171,25 +210,54 @@ public class Absen extends javax.swing.JFrame {
         jPanel2.add(jLabel4);
         jLabel4.setBounds(260, 110, 80, 19);
 
-        jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minggu 1", "Minggu 11", "MInggu 112", "Minggu 2", "MInggu 3", "MInggu 4", "MInggu 5", "MInggu 6", "MInggu 7", "MInggu 8", "MInggu 9", "MInggu 10", "MInggu 11", "MInggu 12", "MInggu 13 ", "MInggu 14", "MInggu 15", "MInggu 16", "MInggu 17" }));
-        jPanel2.add(jComboBox1);
-        jComboBox1.setBounds(350, 110, 112, 25);
+        cbperte.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        cbperte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minggu 1", "Minggu 11", "MInggu 112", "Minggu 2", "MInggu 3", "MInggu 4", "MInggu 5", "MInggu 6", "MInggu 7", "MInggu 8", "MInggu 9", "MInggu 10", "MInggu 11", "MInggu 12", "MInggu 13 ", "MInggu 14", "MInggu 15", "MInggu 16", "MInggu 17" }));
+        jPanel2.add(cbperte);
+        cbperte.setBounds(350, 110, 112, 25);
 
         jButton1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jButton1.setText("Sumbit");
         jPanel2.add(jButton1);
-        jButton1.setBounds(560, 340, 74, 26);
+        jButton1.setBounds(720, 400, 73, 26);
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Kelas");
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(260, 170, 60, 19);
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Jadwal");
+        jPanel2.add(jLabel7);
+        jLabel7.setBounds(510, 110, 60, 16);
+
+        jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3A TIF", "3B TIF", "3C TIF", "3D TIF", "3E TIF" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jComboBox1);
+        jComboBox1.setBounds(350, 170, 81, 25);
+
+        jComboBox2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pemograman Visual", "Sistem Operasi", "Manajemen & Organisasi", "Agama", "Bahasa Inggris", "Metode Numerik" }));
+        jPanel2.add(jComboBox2);
+        jComboBox2.setBounds(580, 110, 170, 25);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 862, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -216,6 +284,10 @@ public class Absen extends javax.swing.JFrame {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,14 +343,18 @@ public class Absen extends javax.swing.JFrame {
     private javax.swing.JButton btnabsen;
     private javax.swing.JButton btnhome;
     private javax.swing.JButton btnrekap;
+    private javax.swing.JComboBox<String> cbperte;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

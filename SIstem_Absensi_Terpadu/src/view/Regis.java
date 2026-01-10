@@ -11,9 +11,6 @@ public class Regis extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-   
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
