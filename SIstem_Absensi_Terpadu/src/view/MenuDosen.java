@@ -1,14 +1,23 @@
 package view;
 
+import dao.dosenDAO;
 import java.awt.Cursor;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class MenuDosen extends javax.swing.JFrame {
-
-    public MenuDosen() {
+    String nipsession;
+    public MenuDosen(String nip) {
         setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
         initbutton();
+        Tanggal.setText(getTanggalFormatLengkap());
+        this.nipsession = nip;
+        aturIdentitasDosen();
+        
     }
     private void initbutton(){
     btnrekap.setContentAreaFilled(false);
@@ -21,7 +30,12 @@ public class MenuDosen extends javax.swing.JFrame {
     btnhome.setFocusPainted(false);
     btnhome.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
     }
-
+    private void aturIdentitasDosen(){
+        dosenDAO dao = new dosenDAO();
+        String nama = dao.getNamaDosen(nipsession);
+        Lnama.setText("Selamat Datang, "+nama);
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,13 +47,17 @@ public class MenuDosen extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnhome = new javax.swing.JButton();
         btnabsen = new javax.swing.JButton();
         btnrekap = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        Tanggal2 = new javax.swing.JLabel();
+        Lnama = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        Tanggal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -55,14 +73,6 @@ public class MenuDosen extends javax.swing.JFrame {
         });
         jPanel2.add(jLabel1);
         jLabel1.setBounds(630, 20, 32, 29);
-
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Selamat Datang");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(310, 40, 273, 24);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -122,6 +132,63 @@ public class MenuDosen extends javax.swing.JFrame {
         jPanel2.add(jPanel1);
         jPanel1.setBounds(0, 0, 210, 450);
 
+        Tanggal2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        Tanggal2.setForeground(new java.awt.Color(255, 255, 255));
+        Tanggal2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tanggal2.setText("Jadwal Hari ini :");
+        Tanggal2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(Tanggal2);
+        Tanggal2.setBounds(250, 140, 320, 24);
+
+        Lnama.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        Lnama.setForeground(new java.awt.Color(255, 255, 255));
+        Lnama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Lnama.setText("Selamat Datang");
+        Lnama.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(Lnama);
+        Lnama.setBounds(250, 60, 160, 24);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Jam", "Mata Kuliah", "Kelas"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(8);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(75);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(12);
+        }
+
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(250, 170, 410, 210);
+
+        Tanggal.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        Tanggal.setForeground(new java.awt.Color(255, 255, 255));
+        Tanggal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tanggal.setText("tanggal");
+        Tanggal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(Tanggal);
+        Tanggal.setBounds(250, 90, 320, 24);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,6 +203,27 @@ public class MenuDosen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    private String getHariIniIndo(){
+        DayOfWeek dayofweek = LocalDate.now().getDayOfWeek();
+        switch (dayofweek) {
+            case MONDAY: return "Senin";
+            case TUESDAY: return "Selasa";
+            case WEDNESDAY: return "Rabu";
+            case THURSDAY: return "Kamis";
+            case FRIDAY: return "Jumat";
+            case SATURDAY: return "Sabtu";
+            case SUNDAY: return "Minggu";
+            default: return "Senin";                                  
+        }
+    }
+    private String getTanggalFormatLengkap(){
+        LocalDate today = LocalDate.now();
+        Locale indo = new Locale("id","ID");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", indo);
+        return today.format(formatter);
+    }
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
     System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel1MouseClicked
@@ -199,20 +287,24 @@ public class MenuDosen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuDosen().setVisible(true);
+                new MenuDosen("19800101").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Lnama;
+    private javax.swing.JLabel Tanggal;
+    private javax.swing.JLabel Tanggal2;
     private javax.swing.JButton btnabsen;
     private javax.swing.JButton btnhome;
     private javax.swing.JButton btnrekap;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

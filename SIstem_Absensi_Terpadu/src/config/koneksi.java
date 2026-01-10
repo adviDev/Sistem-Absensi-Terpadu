@@ -16,7 +16,7 @@ public class koneksi {
             if (con == null || con.isClosed()) {
                 String url = "jdbc:mysql://localhost:3306/db_presensi_terpadu";
                 String user = "root";
-                String password = "MUSANGGAMING"; // sesuaikan dengan password MySQL Anda
+                String password = "1234"; // sesuaikan dengan password MySQL Anda
                 
                 DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
                 con = DriverManager.getConnection(url, user, password);

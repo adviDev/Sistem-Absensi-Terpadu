@@ -1,5 +1,7 @@
 package view;
 
+import javax.swing.JOptionPane;
+
 
 
 public class Regis extends javax.swing.JFrame {
@@ -38,8 +40,8 @@ public class Regis extends javax.swing.JFrame {
         jpass1 = new javax.swing.JPasswordField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioDosen = new javax.swing.JRadioButton();
+        jRadioMahasiswa = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -211,17 +213,17 @@ public class Regis extends javax.swing.JFrame {
         jPanel2.add(jLabel12);
         jLabel12.setBounds(250, 200, 89, 24);
 
-        bgmahasiswa.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jRadioButton2.setText("Dosen");
-        jPanel2.add(jRadioButton2);
-        jRadioButton2.setBounds(260, 280, 65, 24);
+        bgmahasiswa.add(jRadioDosen);
+        jRadioDosen.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jRadioDosen.setText("Dosen");
+        jPanel2.add(jRadioDosen);
+        jRadioDosen.setBounds(260, 280, 64, 24);
 
-        bgmahasiswa.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jRadioButton1.setText("Mahasiswa");
-        jPanel2.add(jRadioButton1);
-        jRadioButton1.setBounds(430, 280, 98, 24);
+        bgmahasiswa.add(jRadioMahasiswa);
+        jRadioMahasiswa.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jRadioMahasiswa.setText("Mahasiswa");
+        jPanel2.add(jRadioMahasiswa);
+        jRadioMahasiswa.setBounds(430, 280, 98, 24);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -279,6 +281,31 @@ public class Regis extends javax.swing.JFrame {
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         // TODO add your handling code here:
+        String  user = JtxtUser.getText();
+        String pass = new String(jpass1.getPassword());
+        String confPass = new String(jpass.getPassword());
+        
+        if (user.isEmpty()||user.equals("Enter Username")||pass.isEmpty()||pass.equals("Enter Password")) {
+            JOptionPane.showMessageDialog(this, "Username / Password tidak boleh kosong!");
+        }
+        
+        if (!pass.equals(confPass)) {
+            JOptionPane.showMessageDialog(this, "Password dan Konfirmasi Password harus sama!");
+        }
+        
+        dao.UserDAO dao = new dao.UserDAO();
+        
+        // default role = mahasiswa
+        boolean isSuccess = dao.register(user, pass, "mahasiswa");
+        if (isSuccess) {
+            JOptionPane.showMessageDialog(this, "Registrasi Berhasil");
+            this.dispose();
+            new Login().setVisible(true);
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Registrasi Gagal!");
+            
+        }
     }//GEN-LAST:event_btnloginActionPerformed
 
     /**
@@ -349,8 +376,8 @@ public class Regis extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioDosen;
+    private javax.swing.JRadioButton jRadioMahasiswa;
     private javax.swing.JPasswordField jpass;
     private javax.swing.JPasswordField jpass1;
     // End of variables declaration//GEN-END:variables
