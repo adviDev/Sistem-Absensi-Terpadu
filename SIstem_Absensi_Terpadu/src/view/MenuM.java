@@ -14,12 +14,6 @@ public class MenuM extends javax.swing.JFrame {
     btnrekap.setContentAreaFilled(false);
     btnrekap.setFocusPainted(false);
     btnrekap.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
-    btnabsen.setContentAreaFilled(false);
-    btnabsen.setFocusPainted(false);
-    btnabsen.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
-    btnhome.setContentAreaFilled(false);
-    btnhome.setFocusPainted(false);
-    btnhome.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
     }
 
     /**
