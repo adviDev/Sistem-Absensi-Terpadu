@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Cursor;
+import javax.swing.JTable;
 
 public class Absen extends javax.swing.JFrame {
 
@@ -9,6 +10,20 @@ public class Absen extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         initbutton();
+        aturkolom();
+        jTable1.getModel().addTableModelListener(e -> {
+        int row = e.getFirstRow();
+        int col = e.getColumn();
+
+    // kolom H I A S
+        if (col >= 2 && col <= 5) {
+            for (int i = 2; i <= 5; i++) {
+                if (i != col) {
+                jTable1.setValueAt(false, row, i);
+            }
+        }
+    }
+});
     }
     private void initbutton(){
     btnrekap.setContentAreaFilled(false);
@@ -20,6 +35,18 @@ public class Absen extends javax.swing.JFrame {
     btnhome.setContentAreaFilled(false);
     btnhome.setFocusPainted(false);
     btnhome.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
+    }
+    private void aturkolom(){
+    jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+    jTable1.getColumnModel().getColumn(0).setPreferredWidth(100); // NIM
+    jTable1.getColumnModel().getColumn(1).setPreferredWidth(200); // Nama
+
+    // H I A S (kecil & pas)
+    for (int i = 2; i <= 5; i++) {
+        jTable1.getColumnModel().getColumn(i).setPreferredWidth(40);
+        jTable1.getColumnModel().getColumn(i).setMaxWidth(40);
+        jTable1.getColumnModel().getColumn(i).setMinWidth(40);
+    }
     }
 
     /**
@@ -120,6 +147,7 @@ public class Absen extends javax.swing.JFrame {
         jPanel2.add(jPanel1);
         jPanel1.setBounds(0, 0, 210, 450);
 
+        jTable1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -128,9 +156,16 @@ public class Absen extends javax.swing.JFrame {
                 "Nim", "Nama", "H", "I", "A", "S"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -171,6 +206,7 @@ public class Absen extends javax.swing.JFrame {
         jPanel2.add(jLabel4);
         jLabel4.setBounds(260, 110, 80, 19);
 
+        jComboBox1.setEditable(true);
         jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minggu 1", "Minggu 11", "MInggu 112", "Minggu 2", "MInggu 3", "MInggu 4", "MInggu 5", "MInggu 6", "MInggu 7", "MInggu 8", "MInggu 9", "MInggu 10", "MInggu 11", "MInggu 12", "MInggu 13 ", "MInggu 14", "MInggu 15", "MInggu 16", "MInggu 17" }));
         jPanel2.add(jComboBox1);

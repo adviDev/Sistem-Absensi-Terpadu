@@ -1,22 +1,12 @@
 package view;
-
-import java.awt.Cursor;
-
 public class Login extends javax.swing.JFrame {
 
     public Login() {
         setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
-        initButtonregis(); 
-        this.setLocationRelativeTo(null);
     }
-    private void initButtonregis(){
-    btnregis.setBorder(null);
-    btnregis.setContentAreaFilled(false);
-    btnregis.setFocusPainted(false);
-    btnregis.setCursor(new Cursor(Cursor.HAND_CURSOR));    
-    }
+
     
 
     /**
