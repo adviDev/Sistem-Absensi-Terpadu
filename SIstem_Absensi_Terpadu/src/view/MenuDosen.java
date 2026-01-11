@@ -274,7 +274,7 @@ public class MenuDosen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnabsenActionPerformed
 
     private void btnrekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrekapActionPerformed
-    new RekapDosen().setVisible(true);
+    new RekapDosen(nipsession).setVisible(true);
     this.dispose();     // TODO add your handling code here:
     }//GEN-LAST:event_btnrekapActionPerformed
 
