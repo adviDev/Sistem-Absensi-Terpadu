@@ -7,6 +7,14 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import config.koneksi;
+import dao.mahasiswaDAO;
+import java.awt.Component;
+import model.mahasiswa;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 public class Absen extends javax.swing.JFrame {
 
@@ -15,6 +23,58 @@ public class Absen extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         initbutton();
+        // Asumsikan nama variabel tabel Anda adalah jtAbsensi
+    tbllist.setModel(new javax.swing.table.DefaultTableModel(
+    new Object [][] {},
+    new String [] {
+        "Nim", "Nama", "H", "I", "A", "S"
+    }
+    ) {
+    // Memberitahu tabel bahwa kolom index 2-5 adalah Boolean (Checkbox)
+    Class[] types = new Class [] {
+        java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, 
+        java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+    };
+
+    @Override
+    public Class getColumnClass(int columnIndex) {
+        return types [columnIndex];
+    }
+
+    // Pastikan kolom checkbox bisa diedit
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return columnIndex >= 2; // Kolom NIM dan Nama tidak bisa diedit
+    }
+    });
+    tbllist.getModel().addTableModelListener(new javax.swing.event.TableModelListener() {
+    private boolean isUpdating = false;
+
+    @Override
+    public void tableChanged(javax.swing.event.TableModelEvent e) {
+        if (isUpdating) return; // Mencegah loop tak terbatas saat memperbarui data
+
+        int row = e.getFirstRow();
+        int column = e.getColumn();
+
+        // Pastikan perubahan terjadi pada kolom H, I, A, atau S (index 2-5)
+        if (column >= 2 && column <= 5) {
+            DefaultTableModel model = (DefaultTableModel) tbllist.getModel();
+            Boolean checked = (Boolean) model.getValueAt(row, column);
+
+            if (checked) {
+                isUpdating = true;
+                // Matikan checkbox lain di baris yang sama
+                for (int i = 2; i <= 5; i++) {
+                    if (i != column) {
+                        model.setValueAt(false, row, i);
+                    }
+                }
+                isUpdating = false;
+            }
+        }
+    }
+});
 
     }
     private void initbutton(){
@@ -42,22 +102,22 @@ public class Absen extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbllist = new javax.swing.JTable();
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cbperte = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btnsimpan = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbKelas = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setLayout(null);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/icons8-close-32.png"))); // NOI18N
@@ -127,20 +187,20 @@ public class Absen extends javax.swing.JFrame {
         jPanel2.add(jPanel1);
         jPanel1.setBounds(0, 0, 210, 490);
 
-        jTable1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbllist.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        tbllist.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nim", "Nama", "H", "I", "A", "S"
+                "Nim", "Nama", "H", "S", "I", "A"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, true, true
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -151,18 +211,24 @@ public class Absen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
+        tbllist.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tbllist);
+        if (tbllist.getColumnModel().getColumnCount() > 0) {
+            tbllist.getColumnModel().getColumn(0).setResizable(false);
+            tbllist.getColumnModel().getColumn(0).setPreferredWidth(3);
+            tbllist.getColumnModel().getColumn(1).setResizable(false);
+            tbllist.getColumnModel().getColumn(2).setResizable(false);
+            tbllist.getColumnModel().getColumn(2).setPreferredWidth(1);
+            tbllist.getColumnModel().getColumn(3).setResizable(false);
+            tbllist.getColumnModel().getColumn(3).setPreferredWidth(1);
+            tbllist.getColumnModel().getColumn(4).setResizable(false);
+            tbllist.getColumnModel().getColumn(4).setPreferredWidth(1);
+            tbllist.getColumnModel().getColumn(5).setResizable(false);
+            tbllist.getColumnModel().getColumn(5).setPreferredWidth(1);
         }
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(360, 220, 380, 160);
+        jScrollPane1.setBounds(300, 220, 470, 160);
 
         jCheckBox1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jCheckBox1.setText("Tandai Hadir Semua");
@@ -191,10 +257,15 @@ public class Absen extends javax.swing.JFrame {
         jPanel2.add(cbperte);
         cbperte.setBounds(350, 110, 108, 25);
 
-        jButton1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jButton1.setText("Sumbit");
-        jPanel2.add(jButton1);
-        jButton1.setBounds(720, 400, 73, 26);
+        btnsimpan.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnsimpan.setText("Sumbit");
+        btnsimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsimpanActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnsimpan);
+        btnsimpan.setBounds(720, 400, 90, 26);
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -208,15 +279,15 @@ public class Absen extends javax.swing.JFrame {
         jPanel2.add(jLabel7);
         jLabel7.setBounds(510, 110, 60, 16);
 
-        jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3A TIF", "3B TIF", "3C TIF", "3D TIF", "3E TIF" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbKelas.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        cbKelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3A TIF", "3B TIF", "3C TIF", "3D TIF", "3E TIF" }));
+        cbKelas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbKelasActionPerformed(evt);
             }
         });
-        jPanel2.add(jComboBox1);
-        jComboBox1.setBounds(350, 170, 81, 25);
+        jPanel2.add(cbKelas);
+        cbKelas.setBounds(350, 170, 81, 25);
 
         jComboBox2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pemograman Visual", "Sistem Operasi", "Manajemen & Organisasi", "Agama", "Bahasa Inggris", "Metode Numerik" }));
@@ -225,8 +296,13 @@ public class Absen extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jButton2.setText("Tampilkan");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2);
-        jButton2.setBounds(470, 170, 95, 26);
+        jButton2.setBounds(470, 170, 110, 26);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -270,7 +346,7 @@ public class Absen extends javax.swing.JFrame {
         }
 
         // Tampilkan ke JTable
-        jTable1.setModel(model);
+        tbllist.setModel(model);
 
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, 
@@ -284,17 +360,122 @@ public class Absen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnrekapActionPerformed
 
     private void btnhomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhomeActionPerformed
-//    new MenuDosen().setVisible(true);
-    this.dispose();         // TODO add your handling code here:
+            // TODO add your handling code here:
     }//GEN-LAST:event_btnhomeActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbKelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKelasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cbKelasActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+int kelasTerpilih = getidbynama();
+        System.out.println("kelas terpilih : "+kelasTerpilih);
+// Siapkan tabel
+DefaultTableModel model = (DefaultTableModel) tbllist.getModel();
+model.setRowCount(0);
+
+// Panggil DAO
+mahasiswaDAO dao = new mahasiswaDAO();
+List<mahasiswa> listMhs = dao.getMahasiswaByKelas(kelasTerpilih);
+
+// Loop data mahasiswa
+for (mahasiswa m : listMhs) {
+    Object[] row = {
+        m.getNim(),
+        m.getNama(),
+        false, false, false, false // H, I, A, S
+    };
+    model.addRow(row);
+}
+autoResizeKolom(tbllist);
+
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsimpanActionPerformed
+      // 1. Inisialisasi List untuk menampung data
+    List<model.detailAbsensi> listAbsen = new ArrayList<>();
+    
+    // 2. Ambil ID Jadwal (Ganti dengan ID jadwal yang sesuai dari ComboBox atau sistem Anda)
+    // Berdasarkan DAO Anda, parameter pertama adalah id_jadwal
+    int idJadwal = 1; 
+
+    DefaultTableModel model = (DefaultTableModel) tbllist.getModel();
+    
+    // 3. Iterasi baris tabel
+    for (int i = 0; i < model.getRowCount(); i++) {
+        String nim = model.getValueAt(i, 0).toString();
+        String status = "";
+
+        // Mapping Checkbox (2:H, 3:I, 4:A, 5:S)
+        if ((Boolean) model.getValueAt(i, 2)) status = "hadir";
+        else if ((Boolean) model.getValueAt(i, 3)) status = "izin";
+        else if ((Boolean) model.getValueAt(i, 4)) status = "alpa";
+        else if ((Boolean) model.getValueAt(i, 5)) status = "sakit";
+
+        // 4. Masukkan ke dalam objek Model hanya jika status dipilih
+        if (!status.isEmpty()) {
+            model.detailAbsensi detail = new model.detailAbsensi();
+            detail.setIdDetail(idJadwal); // Di DAO Anda ps.setInt(1) mengambil dari getIdDetail
+            detail.setNim(nim);
+            detail.setStatusKehadiran(status);
+            
+            listAbsen.add(detail);
+        }
+    }
+
+    // 5. Kirim List ke DAO untuk disimpan sekaligus
+    if (!listAbsen.isEmpty()) {
+        dao.absensiDAO daoAbsen = new dao.absensiDAO();
+        daoAbsen.simpanAbsensi(listAbsen);
+        JOptionPane.showMessageDialog(this, "Berhasil menyimpan " + listAbsen.size() + " data kehadiran.");
+    } else {
+        JOptionPane.showMessageDialog(this, "Pilih status kehadiran terlebih dahulu!");
+    }
+    }//GEN-LAST:event_btnsimpanActionPerformed
+
+    private int getidbynama(){
+        String nama = cbKelas.getSelectedItem().toString();
+        switch (nama) {
+            case "3A TIF": return 1;
+            case "3B TIF": return 2;
+            case "3C TIF": return 3;
+            case "3D TIF": return 4;
+            case "3E TIF": return 5;
+                
+                
+            default:return 1;
+                
+        }
+    }
+    private void autoResizeKolom(JTable table) {
+    table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+    for (int column = 0; column < table.getColumnCount(); column++) {
+        int width = 50; // lebar minimum
+
+        // Header
+        TableColumn col = table.getColumnModel().getColumn(column);
+        TableCellRenderer headerRenderer = table.getTableHeader().getDefaultRenderer();
+        Component headerComp = headerRenderer.getTableCellRendererComponent(
+                table, col.getHeaderValue(), false, false, 0, column);
+        width = Math.max(width, headerComp.getPreferredSize().width);
+
+        // Isi sel
+        for (int row = 0; row < table.getRowCount(); row++) {
+            TableCellRenderer renderer = table.getCellRenderer(row, column);
+            Component comp = table.prepareRenderer(renderer, row, column);
+            width = Math.max(width, comp.getPreferredSize().width);
+        }
+
+        col.setPreferredWidth(width + 10); // padding
+    }
+}
 
     /**
      * @param args the command line arguments
@@ -350,11 +531,11 @@ public class Absen extends javax.swing.JFrame {
     private javax.swing.JButton btnabsen;
     private javax.swing.JButton btnhome;
     private javax.swing.JButton btnrekap;
+    private javax.swing.JButton btnsimpan;
+    private javax.swing.JComboBox<String> cbKelas;
     private javax.swing.JComboBox<String> cbperte;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -366,6 +547,6 @@ public class Absen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbllist;
     // End of variables declaration//GEN-END:variables
 }

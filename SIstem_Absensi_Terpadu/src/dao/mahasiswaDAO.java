@@ -6,7 +6,7 @@ import java.util.List;
 import java.sql.*;
 import model.mahasiswa;
 public class mahasiswaDAO {
-    List<mahasiswa> getMahasiswaByKelas(int idKelas){
+    public List<mahasiswa> getMahasiswaByKelas(int idKelas){
         List<mahasiswa> listMhs = new ArrayList<>();
         
         String sql = "select m.nim, m.nama_mahasiswa, m.angkatan "
