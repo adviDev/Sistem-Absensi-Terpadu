@@ -262,7 +262,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
         // TODO add your handling code here:
-               String username = JtxtUser.getText();
+    String username = JtxtUser.getText();
     String password = new String(jpass.getPassword());
 
    if (username.isEmpty() || password.isEmpty()) {
