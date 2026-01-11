@@ -1,13 +1,4 @@
 package view;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import javax.swing.JOptionPane;
-import config.koneksi;
-import javax.swing.table.DefaultTableModel;
 
 import java.awt.Cursor;
 import javax.swing.JOptionPane;
