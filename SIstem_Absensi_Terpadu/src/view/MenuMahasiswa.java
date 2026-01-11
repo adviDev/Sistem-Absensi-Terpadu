@@ -1,19 +1,56 @@
 package view;
 
+import dao.absensiDAO;
 import java.awt.Cursor;
-
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
 public class MenuMahasiswa extends javax.swing.JFrame {
-
-    public MenuMahasiswa() {
+    String nimSession;
+    public MenuMahasiswa(String nim) {
         setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
         initbutton();
+        this.nimSession=nim;     
+        getDataMhs();
+        getStatistik();
+        tampilRiwayatAbsen();
     }
     private void initbutton(){
     btnrekap.setContentAreaFilled(false);
     btnrekap.setFocusPainted(false);
     btnrekap.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
+    }
+    public void getDataMhs(){
+        dao.mahasiswaDAO dao = new dao.mahasiswaDAO();
+        model.mahasiswa data = dao.getProfil(nimSession);
+        if (data != null) {
+            lNama.setText("Selamat Datang, "+data.getNama());
+            lNim.setText("Nim : "+data.getNim());
+        } else{
+            lNama.setText("tidak ada mahasiswa dengan nim tersebut");
+        }
+        
+    }
+    public void getStatistik(){
+        dao.absensiDAO dao = new dao.absensiDAO();
+        model.rekapAbsensi data = dao.getRekapAbsensi(nimSession);
+        TFhadir.setText("Hadir : "+data.getTotalHadir());
+        TFsakit.setText("Sakit : "+data.getTotalSakit());
+        TFalpa.setText("Alpa : "+data.getTotalAlpa());
+        TFizin.setText("Izin : "+data.getTotalIzin());
+    }
+    
+    public void tampilRiwayatAbsen(){
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        
+        absensiDAO dao = new absensiDAO();
+        List<String[]> dataRiwayat = dao.getRiwayatAbsensi(nimSession);
+        
+        for (String[] row : dataRiwayat) {
+            model.addRow(row);
+        }
     }
 
     /**
@@ -34,12 +71,14 @@ public class MenuMahasiswa extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        lNim = new javax.swing.JLabel();
+        TFsakit = new javax.swing.JTextField();
+        TFhadir = new javax.swing.JTextField();
+        TFalpa = new javax.swing.JTextField();
+        TFizin = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        lNama = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -54,7 +93,7 @@ public class MenuMahasiswa extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(820, 20, 32, 29);
+        jLabel1.setBounds(830, 10, 32, 29);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -116,58 +155,78 @@ public class MenuMahasiswa extends javax.swing.JFrame {
         }
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(250, 190, 590, 250);
+        jScrollPane1.setBounds(250, 220, 590, 230);
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Statistik Kehadiran");
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(290, 70, 180, 24);
+        lNim.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lNim.setForeground(new java.awt.Color(255, 255, 255));
+        lNim.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lNim.setText("nim");
+        lNim.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel2.add(lNim);
+        lNim.setBounds(250, 80, 560, 30);
 
-        jTextField1.setBackground(new java.awt.Color(51, 153, 255));
-        jTextField1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jTextField1.setText("Sakit :");
-        jPanel2.add(jTextField1);
-        jTextField1.setBounds(660, 100, 100, 40);
+        TFsakit.setEditable(false);
+        TFsakit.setBackground(new java.awt.Color(51, 153, 255));
+        TFsakit.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        TFsakit.setText("Sakit :");
+        jPanel2.add(TFsakit);
+        TFsakit.setBounds(660, 140, 100, 40);
 
-        jTextField2.setBackground(new java.awt.Color(51, 204, 0));
-        jTextField2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jTextField2.setText("Hadir :");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        TFhadir.setEditable(false);
+        TFhadir.setBackground(new java.awt.Color(51, 204, 0));
+        TFhadir.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        TFhadir.setText("Hadir :");
+        TFhadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                TFhadirActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField2);
-        jTextField2.setBounds(330, 100, 100, 40);
+        jPanel2.add(TFhadir);
+        TFhadir.setBounds(330, 140, 100, 40);
 
-        jTextField3.setBackground(new java.awt.Color(204, 51, 0));
-        jTextField3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jTextField3.setText("Alpa :");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        TFalpa.setEditable(false);
+        TFalpa.setBackground(new java.awt.Color(204, 51, 0));
+        TFalpa.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        TFalpa.setText("Alpa :");
+        TFalpa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                TFalpaActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField3);
-        jTextField3.setBounds(550, 100, 100, 40);
+        jPanel2.add(TFalpa);
+        TFalpa.setBounds(550, 140, 100, 40);
 
-        jTextField4.setBackground(new java.awt.Color(255, 204, 0));
-        jTextField4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jTextField4.setText("Izin :");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        TFizin.setEditable(false);
+        TFizin.setBackground(new java.awt.Color(255, 204, 0));
+        TFizin.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        TFizin.setText("Izin :");
+        TFizin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                TFizinActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField4);
-        jTextField4.setBounds(440, 100, 100, 40);
+        jPanel2.add(TFizin);
+        TFizin.setBounds(440, 140, 100, 40);
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Riwayat Absensi Terakhir");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(250, 170, 240, 24);
+        jLabel4.setBounds(250, 190, 240, 24);
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Statistik Kehadiran");
+        jPanel2.add(jLabel7);
+        jLabel7.setBounds(290, 110, 180, 24);
+
+        lNama.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lNama.setForeground(new java.awt.Color(255, 255, 255));
+        lNama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lNama.setText("nama");
+        lNama.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel2.add(lNama);
+        lNama.setBounds(250, 50, 560, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,21 +247,21 @@ public class MenuMahasiswa extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void btnrekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrekapActionPerformed
-        new MenuMahasiswa().setVisible(true);
+//        new MenuMahasiswa().setVisible(true);
         this.dispose();     // TODO add your handling code here:
     }//GEN-LAST:event_btnrekapActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void TFhadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFhadirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_TFhadirActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void TFizinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFizinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_TFizinActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void TFalpaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFalpaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_TFalpaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,28 +418,30 @@ public class MenuMahasiswa extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuMahasiswa().setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new MenuMahasiswa().setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TFalpa;
+    private javax.swing.JTextField TFhadir;
+    private javax.swing.JTextField TFizin;
+    private javax.swing.JTextField TFsakit;
     private javax.swing.JButton btnrekap;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel lNama;
+    private javax.swing.JLabel lNim;
     // End of variables declaration//GEN-END:variables
 }
