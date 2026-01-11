@@ -1,14 +1,21 @@
 package view;
 
+import dao.rekapDAO;
 import java.awt.Cursor;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class RekapDosen extends javax.swing.JFrame {
-
-    public RekapDosen() {
+    private String nipsession;
+    public RekapDosen(String nip) {
         setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
         initbutton();
+        this.nipsession = nip;
+        isiFilterComboBox();
+        
     }
     private void initbutton(){
     btnrekap.setContentAreaFilled(false);
@@ -22,11 +29,47 @@ public class RekapDosen extends javax.swing.JFrame {
     btnhome.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
     }
     
-    private String username;
-    public RekapDosen(String username) {
-    initComponents();
-    this.username = username;
-}
+    private void isiFilterComboBox(){
+        rekapDAO dao = new rekapDAO();
+        
+        CBjadwal.removeAllItems();
+        CBjadwal.addItem("- Pilih Matkul -");
+        List<String> matkulList = dao.getMatkulDosen(nipsession);
+        for (String m : matkulList) {
+            CBjadwal.addItem(m);
+        }
+        
+        CBkelas.removeAllItems();
+        CBkelas.addItem("- Pilih Kelas -");
+        List<String> kelasList = dao.getKelasDosen(nipsession);
+        for (String k : kelasList) {
+            CBkelas.addItem(k);
+        }
+    }
+    
+    private void tampilDataRekap(){
+        if (CBjadwal.getSelectedIndex()<=0||CBkelas.getSelectedIndex()<=0) {
+            JOptionPane.showMessageDialog(this, "Harap pilih Mata Kuliah dan Kelas terlebih dahulu");
+            return;
+        }
+        String matkul = CBjadwal.getSelectedItem().toString();
+        String kelas = CBkelas.getSelectedItem().toString();
+        
+        rekapDAO dao = new rekapDAO();
+        DefaultTableModel model = dao.getRekapAbsensi(nipsession, matkul, kelas);
+        
+        jTable1.setModel(model);
+        
+        if (jTable1.getColumnModel().getColumnCount()>0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(80);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(200);
+            for (int i = 2; i <= 5; i++) {
+                jTable1.getColumnModel().getColumn(i).setPreferredWidth(10);
+            }
+            
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,9 +93,9 @@ public class RekapDosen extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnsumbit = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        CBjadwal = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        CBkelas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -133,7 +176,7 @@ public class RekapDosen extends javax.swing.JFrame {
 
             },
             new String [] {
-                "NIm", "Nama", "H", "I", "A", "S"
+                "NIM", "Nama", "H", "I", "A", "S"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -155,7 +198,7 @@ public class RekapDosen extends javax.swing.JFrame {
         }
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(350, 250, 380, 160);
+        jScrollPane1.setBounds(270, 250, 540, 160);
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,6 +208,11 @@ public class RekapDosen extends javax.swing.JFrame {
 
         btnsumbit.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnsumbit.setText("Sumbit");
+        btnsumbit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsumbitActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnsumbit);
         btnsumbit.setBounds(500, 210, 90, 23);
 
@@ -172,23 +220,23 @@ public class RekapDosen extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Jadwal");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(570, 110, 60, 19);
+        jLabel6.setBounds(290, 150, 60, 30);
 
-        jComboBox2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pemograman Visual", "Sistem Operasi", "Manajemen & Organisasi", "Agama", "Bahasa Inggris", "Metode Numerik" }));
-        jPanel2.add(jComboBox2);
-        jComboBox2.setBounds(640, 110, 170, 25);
+        CBjadwal.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        CBjadwal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pemograman Visual", "Sistem Operasi", "Manajemen & Organisasi", "Agama", "Bahasa Inggris", "Metode Numerik" }));
+        jPanel2.add(CBjadwal);
+        CBjadwal.setBounds(370, 150, 320, 30);
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Kelas");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(290, 110, 50, 19);
+        jLabel7.setBounds(290, 110, 70, 30);
 
-        jComboBox3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3A TIF", "3B TIF", "3C TIF", "3D TIF", "3E TIF" }));
-        jPanel2.add(jComboBox3);
-        jComboBox3.setBounds(370, 110, 80, 25);
+        CBkelas.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        CBkelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3A TIF", "3B TIF", "3C TIF", "3D TIF", "3E TIF" }));
+        jPanel2.add(CBkelas);
+        CBkelas.setBounds(370, 110, 110, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -212,20 +260,23 @@ public class RekapDosen extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void btnabsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnabsenActionPerformed
-    new RekapDosen(username).setVisible(true);
-    this.dispose();         // TODO add your handling code here:
+        new MenuDosen(nipsession).setVisible(true);
+        this.dispose();        
     }//GEN-LAST:event_btnabsenActionPerformed
 
     private void btnrekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrekapActionPerformed
-    new RekapDosen().setVisible(true);
-    this.dispose();     // TODO add your handling code here:
+    
     }//GEN-LAST:event_btnrekapActionPerformed
 
     private void btnhomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhomeActionPerformed
-    MenuDosen menu = new MenuDosen(username);
-    menu.setVisible(true);
-    this.dispose();        // TODO add your handling code here:
+        new MenuDosen(nipsession).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnhomeActionPerformed
+
+    private void btnsumbitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsumbitActionPerformed
+        // TODO add your handling code here:
+        tampilDataRekap();
+    }//GEN-LAST:event_btnsumbitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,85 +304,19 @@ public class RekapDosen extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RekapDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RekapDosen().setVisible(true);
-            }
-        });
+//
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CBjadwal;
+    private javax.swing.JComboBox<String> CBkelas;
     private javax.swing.JButton btnabsen;
     private javax.swing.JButton btnhome;
     private javax.swing.JButton btnrekap;
     private javax.swing.JButton btnsumbit;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
