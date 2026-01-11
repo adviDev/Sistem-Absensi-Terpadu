@@ -337,8 +337,7 @@ public void tampilDaftarMahasiswa() {
     }//GEN-LAST:event_btnabsenActionPerformed
 
     private void btnrekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrekapActionPerformed
-    new RekapDosen().setVisible(true);
-    this.dispose();         // TODO add your handling code here:
+    
     }//GEN-LAST:event_btnrekapActionPerformed
 
     private void btnhomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhomeActionPerformed
