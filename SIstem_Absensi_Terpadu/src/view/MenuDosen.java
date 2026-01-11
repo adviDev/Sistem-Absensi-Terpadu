@@ -1,14 +1,25 @@
 package view;
 
+import dao.dosenDAO;
 import java.awt.Cursor;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+import javax.swing.JOptionPane;
 
-public class Rekap extends javax.swing.JFrame {
-
-    public Rekap() {
+public class MenuDosen extends javax.swing.JFrame {
+    String nipsession;
+    public MenuDosen(String nip) {
         setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
         initbutton();
+        Tanggal.setText(getTanggalFormatLengkap());
+        this.nipsession = nip;
+        aturIdentitasDosen();
+        tampilJadwalOtomatis();
+        
     }
     private void initbutton(){
     btnrekap.setContentAreaFilled(false);
@@ -21,6 +32,42 @@ public class Rekap extends javax.swing.JFrame {
     btnhome.setFocusPainted(false);
     btnhome.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
     }
+    private void aturIdentitasDosen(){
+        dosenDAO dao = new dosenDAO();
+        String nama = dao.getNamaDosen(nipsession);
+        Lnama.setText("Selamat Datang, "+nama);
+        
+    }
+    private void tampilJadwalOtomatis() {
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+        
+        model.setRowCount(0);
+        model.setColumnCount(0); 
+        model.addColumn("Jam");
+        model.addColumn("Mata Kuliah");
+        model.addColumn("Kelas");
+        model.addColumn("ID Kelas"); 
+        
+        jTable1.getColumnModel().getColumn(3).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(3).setMaxWidth(0);
+        jTable1.getColumnModel().getColumn(3).setWidth(0);
+        
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(50); 
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(200); 
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(50);
+        
+        String hariIni = getHariIniIndo(); 
+        dosenDAO dao = new dosenDAO();
+        java.util.List<String[]> dataJadwal = dao.getJadwalHarian(nipsession, hariIni);
+
+        if (dataJadwal.isEmpty()) {           
+            model.addRow(new Object[]{"-", "Tidak ada jadwal", "-", "0"}); 
+        } else {
+            for (String[] row : dataJadwal) {
+                model.addRow(row); 
+            }
+        }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,12 +86,12 @@ public class Rekap extends javax.swing.JFrame {
         btnrekap = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        Tanggal2 = new javax.swing.JLabel();
+        Lnama = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        btnsumbit = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        Tanggal = new javax.swing.JLabel();
+        btnMulaiSesi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -59,7 +106,7 @@ public class Rekap extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(630, 20, 32, 29);
+        jLabel1.setBounds(660, 10, 32, 29);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -119,60 +166,68 @@ public class Rekap extends javax.swing.JFrame {
         jPanel2.add(jPanel1);
         jPanel1.setBounds(0, 0, 210, 450);
 
+        Tanggal2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        Tanggal2.setForeground(new java.awt.Color(255, 255, 255));
+        Tanggal2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tanggal2.setText("Jadwal Hari ini :");
+        Tanggal2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(Tanggal2);
+        Tanggal2.setBounds(240, 120, 320, 24);
+
+        Lnama.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        Lnama.setForeground(new java.awt.Color(255, 255, 255));
+        Lnama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Lnama.setText("Selamat Datang");
+        Lnama.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(Lnama);
+        Lnama.setBounds(240, 50, 380, 24);
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "NIm", "Nama", "H", "I", "A", "S"
+                "Jam", "Mata Kuliah", "Kelas"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(8);
             jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(75);
             jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(12);
         }
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(260, 220, 380, 110);
+        jScrollPane1.setBounds(240, 150, 410, 210);
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("REKAP ABSEN");
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(380, 40, 150, 16);
+        Tanggal.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        Tanggal.setForeground(new java.awt.Color(255, 255, 255));
+        Tanggal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tanggal.setText("tanggal");
+        Tanggal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(Tanggal);
+        Tanggal.setBounds(240, 80, 320, 24);
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Pilih Nama");
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(280, 90, 90, 16);
-
-        btnsumbit.setText("Sumbit");
-        jPanel2.add(btnsumbit);
-        btnsumbit.setBounds(410, 160, 72, 23);
-
-        jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        btnMulaiSesi.setText("Mulai Sesi Absensi");
+        btnMulaiSesi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                btnMulaiSesiActionPerformed(evt);
             }
         });
-        jPanel2.add(jComboBox1);
-        jComboBox1.setBounds(360, 90, 160, 25);
+        jPanel2.add(btnMulaiSesi);
+        btnMulaiSesi.setBounds(370, 370, 160, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,28 +243,88 @@ public class Rekap extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    private String getHariIniIndo(){
+        DayOfWeek dayofweek = LocalDate.now().getDayOfWeek();
+        switch (dayofweek) {
+            case MONDAY: return "Senin";
+            case TUESDAY: return "Selasa";
+            case WEDNESDAY: return "Rabu";
+            case THURSDAY: return "Kamis";
+            case FRIDAY: return "Jumat";
+            case SATURDAY: return "Sabtu";
+            case SUNDAY: return "Minggu";
+            default: return "Senin";                                  
+        }
+    }
+    private String getTanggalFormatLengkap(){
+        LocalDate today = LocalDate.now();
+        Locale indo = new Locale("id","ID");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", indo);
+        return today.format(formatter);
+    }
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
     System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void btnabsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnabsenActionPerformed
-    new Absen().setVisible(true);
+//    new Absen().setVisible(true);
     this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_btnabsenActionPerformed
 
     private void btnrekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrekapActionPerformed
-    new Rekap().setVisible(true);
+    new RekapDosen(nipsession).setVisible(true);
     this.dispose();     // TODO add your handling code here:
     }//GEN-LAST:event_btnrekapActionPerformed
 
     private void btnhomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhomeActionPerformed
-    new Menu().setVisible(true);
-    this.dispose();         // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnhomeActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void btnMulaiSesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMulaiSesiActionPerformed
+                                         
+        int selectedRow = jTable1.getSelectedRow();
+        
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Harap pilih jadwal kuliah");
+        } else {
+            try {
+                // 1. Ambil data dari Tabel
+                String matkul = jTable1.getValueAt(selectedRow, 1).toString();
+                String kelas = jTable1.getValueAt(selectedRow, 2).toString(); // Nama Kelas
+                String idKelas = jTable1.getValueAt(selectedRow, 3).toString(); // ID Kelas (Hidden)
+
+                // 2. Panggil DAO
+                dao.absensiDAO aDAO = new dao.absensiDAO();
+
+                // 3. Cari ID Jadwal dulu (Butuh ID Kelas, Matkul, dan NIP Session)
+                int idJadwal = aDAO.getIdJadwal(idKelas, matkul, this.nipsession);
+
+                if (idJadwal == 0) {
+                    JOptionPane.showMessageDialog(this, "Data Jadwal tidak ditemukan di database!");
+                    return;
+                }
+
+                // 4. --- INSERT DATA SESI DISINI ---
+                int idSesiBaru = aDAO.buatSesiBaru(idJadwal);
+
+                if (idSesiBaru > 0) {
+                    // 5. Jika sukses, buka form Absen dengan membawa ID SESI
+                    // Perhatikan: Kita kirim idSesiBaru ke constructor Absen
+                    new Absen(nipsession, idKelas, matkul, kelas, idSesiBaru).setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Gagal membuat sesi absensi.");
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            }
+        }
+    
+    }//GEN-LAST:event_btnMulaiSesiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,30 +343,14 @@ public class Rekap extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Rekap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Rekap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Rekap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Rekap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -270,23 +369,23 @@ public class Rekap extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Rekap().setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new MenuDosen("19800101").setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Lnama;
+    private javax.swing.JLabel Tanggal;
+    private javax.swing.JLabel Tanggal2;
+    private javax.swing.JButton btnMulaiSesi;
     private javax.swing.JButton btnabsen;
     private javax.swing.JButton btnhome;
     private javax.swing.JButton btnrekap;
-    private javax.swing.JButton btnsumbit;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

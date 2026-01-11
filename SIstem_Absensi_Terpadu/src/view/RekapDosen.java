@@ -1,14 +1,21 @@
 package view;
 
+import dao.rekapDAO;
 import java.awt.Cursor;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
-public class Menu extends javax.swing.JFrame {
-
-    public Menu() {
+public class RekapDosen extends javax.swing.JFrame {
+    private String nipsession;
+    public RekapDosen(String nip) {
         setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
         initbutton();
+        this.nipsession = nip;
+        isiFilterComboBox();
+        
     }
     private void initbutton(){
     btnrekap.setContentAreaFilled(false);
@@ -21,6 +28,48 @@ public class Menu extends javax.swing.JFrame {
     btnhome.setFocusPainted(false);
     btnhome.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
     }
+    
+    private void isiFilterComboBox(){
+        rekapDAO dao = new rekapDAO();
+        
+        CBjadwal.removeAllItems();
+        CBjadwal.addItem("- Pilih Matkul -");
+        List<String> matkulList = dao.getMatkulDosen(nipsession);
+        for (String m : matkulList) {
+            CBjadwal.addItem(m);
+        }
+        
+        CBkelas.removeAllItems();
+        CBkelas.addItem("- Pilih Kelas -");
+        List<String> kelasList = dao.getKelasDosen(nipsession);
+        for (String k : kelasList) {
+            CBkelas.addItem(k);
+        }
+    }
+    
+    private void tampilDataRekap(){
+        if (CBjadwal.getSelectedIndex()<=0||CBkelas.getSelectedIndex()<=0) {
+            JOptionPane.showMessageDialog(this, "Harap pilih Mata Kuliah dan Kelas terlebih dahulu");
+            return;
+        }
+        String matkul = CBjadwal.getSelectedItem().toString();
+        String kelas = CBkelas.getSelectedItem().toString();
+        
+        rekapDAO dao = new rekapDAO();
+        DefaultTableModel model = dao.getRekapAbsensi(nipsession, matkul, kelas);
+        
+        jTable1.setModel(model);
+        
+        if (jTable1.getColumnModel().getColumnCount()>0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(80);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(200);
+            for (int i = 2; i <= 5; i++) {
+                jTable1.getColumnModel().getColumn(i).setPreferredWidth(10);
+            }
+            
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,13 +82,20 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnhome = new javax.swing.JButton();
         btnabsen = new javax.swing.JButton();
         btnrekap = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        btnsumbit = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        CBjadwal = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        CBkelas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -54,15 +110,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(630, 20, 32, 29);
-
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Selamat Datang");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(310, 40, 273, 24);
+        jLabel1.setBounds(820, 20, 32, 29);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -120,17 +168,88 @@ public class Menu extends javax.swing.JFrame {
         jLabel3.setBounds(60, 70, 90, 24);
 
         jPanel2.add(jPanel1);
-        jPanel1.setBounds(0, 0, 210, 450);
+        jPanel1.setBounds(0, 0, 210, 490);
+
+        jTable1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "NIM", "Nama", "H", "I", "A", "S"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setResizable(false);
+            jTable1.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(270, 250, 540, 160);
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("REKAP ABSEN");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(480, 40, 150, 16);
+
+        btnsumbit.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnsumbit.setText("Sumbit");
+        btnsumbit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsumbitActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnsumbit);
+        btnsumbit.setBounds(500, 210, 90, 23);
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Jadwal");
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(290, 150, 60, 30);
+
+        CBjadwal.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        CBjadwal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pemograman Visual", "Sistem Operasi", "Manajemen & Organisasi", "Agama", "Bahasa Inggris", "Metode Numerik" }));
+        jPanel2.add(CBjadwal);
+        CBjadwal.setBounds(370, 150, 320, 30);
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Kelas");
+        jPanel2.add(jLabel7);
+        jLabel7.setBounds(290, 110, 70, 30);
+
+        CBkelas.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        CBkelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3A TIF", "3B TIF", "3C TIF", "3D TIF", "3E TIF" }));
+        jPanel2.add(CBkelas);
+        CBkelas.setBounds(370, 110, 110, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -141,18 +260,23 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void btnabsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnabsenActionPerformed
-    new Absen().setVisible(true);
-    this.dispose();         // TODO add your handling code here:
+        new MenuDosen(nipsession).setVisible(true);
+        this.dispose();        
     }//GEN-LAST:event_btnabsenActionPerformed
 
     private void btnrekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrekapActionPerformed
-    new Rekap().setVisible(true);
-    this.dispose();     // TODO add your handling code here:
+    
     }//GEN-LAST:event_btnrekapActionPerformed
 
     private void btnhomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhomeActionPerformed
-        // TODO add your handling code here:
+        new MenuDosen(nipsession).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnhomeActionPerformed
+
+    private void btnsumbitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsumbitActionPerformed
+        // TODO add your handling code here:
+        tampilDataRekap();
+    }//GEN-LAST:event_btnsumbitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,40 +295,37 @@ public class Menu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RekapDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RekapDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RekapDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RekapDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Menu().setVisible(true);
-            }
-        });
+//
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CBjadwal;
+    private javax.swing.JComboBox<String> CBkelas;
     private javax.swing.JButton btnabsen;
     private javax.swing.JButton btnhome;
     private javax.swing.JButton btnrekap;
+    private javax.swing.JButton btnsumbit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

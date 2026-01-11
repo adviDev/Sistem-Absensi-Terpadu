@@ -11,19 +11,18 @@ import java.sql.*;
 public class koneksi {
     private static Connection con;
     public static Connection getConnection(){
-        if(con == null){
-            try {       
-            String url = "jdbc:mysql://localhost/db_presensi_terpadu";
-            String usr = "root";
-            String pass = "MUSANGGAMING";  
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(url, usr, pass);
-            System.out.println("koneksi berhasil");
-            }  catch (ClassNotFoundException e) {
-                System.out.println("driver tidak ditemukan");
-            } catch(SQLException e){
-                System.out.println("gagal koneksi : "+ e.getMessage());                     
-                }     
+        try {
+            // Memperbaiki error dengan membungkus pengecekan isClosed() dalam try-catch
+            if (con == null || con.isClosed()) {
+                String url = "jdbc:mysql://localhost:3306/db_presensi_terpadu";
+                String user = "root";
+                String password = "1234"; // sesuaikan dengan password MySQL Anda
+                
+                DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+                con = DriverManager.getConnection(url, user, password);
+            }
+        } catch (SQLException e) {
+            System.err.println("Gagal menghubungkan ke database: " + e.getMessage());
         }
         return con;
     }
