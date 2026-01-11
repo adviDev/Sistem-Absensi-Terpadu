@@ -4,6 +4,7 @@ import config.koneksi;
 import java.util.List;
 import model.detailAbsensi;
 import java.sql.*;
+import java.util.ArrayList;
 import model.rekapAbsensi;
 public class absensiDAO {
     
@@ -98,13 +99,13 @@ public class absensiDAO {
     public rekapAbsensi getRekapAbsensi(String nim){
         rekapAbsensi rekap = new rekapAbsensi();
         rekap.setNim(nim);
-        String sql = "select"
-                + "sum(case when status='hadir' then 1 else 0 end) as jml_hadir,"
-                + "sum(case when status='sakit' then 1 else 0 end) as jml_sakit,"
-                + "sum(case when status='izin' then 1 else 0 end) as jml_izin,"
-                + "sum(case when status='alpa' then 1 else 0 end) as jml_alpa,"
+        String sql = "select "
+                + "sum(case when status_kehadiran='Hadir' then 1 else 0 end) as jml_hadir, "
+                + "sum(case when status_kehadiran='Sakit' then 1 else 0 end) as jml_sakit, "
+                + "sum(case when status_kehadiran='Izin' then 1 else 0 end) as jml_izin, "
+                + "sum(case when status_kehadiran='Alpa' then 1 else 0 end) as jml_alpa "
                 + "from detail_absensi "
-                + "where nim = ?";
+                + "where nim = ? ";
         try (Connection conn = koneksi.getConnection();
                 PreparedStatement ps=conn.prepareStatement(sql)){
             ps.setString(1, nim);
@@ -120,5 +121,40 @@ public class absensiDAO {
             System.out.println(e.getMessage());
         }
         return rekap;
+    }
+    /**
+     * mengambil riwayat absensi
+     * return tanggal, mata kuliah, status kehadiran
+     * @param nim
+     * @return 
+     * 
+     */
+    public List<String[]> getRiwayatAbsensi(String nim){
+        List<String[]> listRiwayat = new ArrayList<>();
+        
+        String sql = "select s.tanggal, mk.nama_mk, d.status_kehadiran "
+                + "from detail_absensi d "
+                + "join sesi_absensi s on d.id_sesi = s.id_sesi "
+                + "join jadwal_kuliah j on s.id_jadwal = j.id_jadwal "
+                + "join mata_kuliah mk on j.kode_mk=mk.kode_mk "
+                + "where d.nim = ? "
+                + "order by s.tanggal desc";
+        try (Connection con=koneksi.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)){
+            ps.setString(1, nim);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {                
+                String tanggal = rs.getString("tanggal");
+                String matkul = rs.getString("nama_mk");
+                String status = rs.getString("status_kehadiran");
+                
+                String[] data = {tanggal, matkul, status};
+                listRiwayat.add(data);
+            }
+            
+        } catch (SQLException e) {
+            System.err.println("Error Get Riwayat: " + e.getMessage());
+        }
+        return listRiwayat;
     }
 }
