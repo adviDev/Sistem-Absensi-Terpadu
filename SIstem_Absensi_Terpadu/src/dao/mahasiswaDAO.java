@@ -6,7 +6,7 @@ import java.util.List;
 import java.sql.*;
 import model.mahasiswa;
 public class mahasiswaDAO {
-    public List<mahasiswa> getMahasiswaByKelas(int idKelas){
+    public List<mahasiswa> getMahasiswaByKelas(String idKelas){
         List<mahasiswa> listMhs = new ArrayList<>();
         
         String sql = "select m.nim, m.nama_mahasiswa, m.angkatan "
@@ -16,7 +16,7 @@ public class mahasiswaDAO {
                 + "order by m.nama_mahasiswa asc";
         try (Connection conn = koneksi.getConnection();
                 PreparedStatement ps = conn.prepareStatement(sql)){
-            ps.setInt(1, idKelas);
+            ps.setString(1, idKelas);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {                
                 mahasiswa m = new mahasiswa();

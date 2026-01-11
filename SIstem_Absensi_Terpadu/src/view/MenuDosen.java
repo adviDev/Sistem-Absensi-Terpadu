@@ -6,6 +6,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 
 public class MenuDosen extends javax.swing.JFrame {
     String nipsession;
@@ -38,29 +39,36 @@ public class MenuDosen extends javax.swing.JFrame {
         
     }
     private void tampilJadwalOtomatis() {
-    // 1. Ambil model tabel dari jTable1
-    javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
-    
-    // 2. Bersihkan data lama (reset tabel)
-    model.setRowCount(0);
-    
-    // 3. Ambil NIP session dan Hari ini
-    String hariIni = getHariIniIndo(); // Ini akan mengambil "Senin", "Selasa", dst.
-    
-    // 4. Panggil DAO
-    dosenDAO dao = new dosenDAO();
-    java.util.List<String[]> dataJadwal = dao.getJadwalHarian(nipsession, hariIni);
-    
-    // 5. Looping data dari database ke tabel GUI
-    if (dataJadwal.isEmpty()) {
-        // Opsi: Jika tidak ada jadwal, bisa tambahkan baris kosong atau info
-         model.addRow(new Object[]{"-", "Tidak ada jadwal", "-"});
-    } else {
-        for (String[] row : dataJadwal) {
-            model.addRow(row);
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+        
+        model.setRowCount(0);
+        model.setColumnCount(0); 
+        model.addColumn("Jam");
+        model.addColumn("Mata Kuliah");
+        model.addColumn("Kelas");
+        model.addColumn("ID Kelas"); 
+        
+        jTable1.getColumnModel().getColumn(3).setMinWidth(0);
+        jTable1.getColumnModel().getColumn(3).setMaxWidth(0);
+        jTable1.getColumnModel().getColumn(3).setWidth(0);
+        
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(50); 
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(200); 
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(50);
+        
+        String hariIni = getHariIniIndo(); 
+        dosenDAO dao = new dosenDAO();
+        java.util.List<String[]> dataJadwal = dao.getJadwalHarian(nipsession, hariIni);
+
+        if (dataJadwal.isEmpty()) {           
+            model.addRow(new Object[]{"-", "Tidak ada jadwal", "-", "0"}); 
+        } else {
+            for (String[] row : dataJadwal) {
+                model.addRow(row); 
+            }
         }
-    }
 }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -219,7 +227,7 @@ public class MenuDosen extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnMulaiSesi);
-        btnMulaiSesi.setBounds(380, 370, 140, 23);
+        btnMulaiSesi.setBounds(370, 370, 160, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -261,7 +269,7 @@ public class MenuDosen extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void btnabsenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnabsenActionPerformed
-    new Absen().setVisible(true);
+//    new Absen().setVisible(true);
     this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_btnabsenActionPerformed
 
@@ -275,7 +283,47 @@ public class MenuDosen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnhomeActionPerformed
 
     private void btnMulaiSesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMulaiSesiActionPerformed
-        // TODO add your handling code here:
+                                         
+        int selectedRow = jTable1.getSelectedRow();
+        
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Harap pilih jadwal kuliah");
+        } else {
+            try {
+                // 1. Ambil data dari Tabel
+                String matkul = jTable1.getValueAt(selectedRow, 1).toString();
+                String kelas = jTable1.getValueAt(selectedRow, 2).toString(); // Nama Kelas
+                String idKelas = jTable1.getValueAt(selectedRow, 3).toString(); // ID Kelas (Hidden)
+
+                // 2. Panggil DAO
+                dao.absensiDAO aDAO = new dao.absensiDAO();
+
+                // 3. Cari ID Jadwal dulu (Butuh ID Kelas, Matkul, dan NIP Session)
+                int idJadwal = aDAO.getIdJadwal(idKelas, matkul, this.nipsession);
+
+                if (idJadwal == 0) {
+                    JOptionPane.showMessageDialog(this, "Data Jadwal tidak ditemukan di database!");
+                    return;
+                }
+
+                // 4. --- INSERT DATA SESI DISINI ---
+                int idSesiBaru = aDAO.buatSesiBaru(idJadwal);
+
+                if (idSesiBaru > 0) {
+                    // 5. Jika sukses, buka form Absen dengan membawa ID SESI
+                    // Perhatikan: Kita kirim idSesiBaru ke constructor Absen
+                    new Absen(nipsession, idKelas, matkul, kelas, idSesiBaru).setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Gagal membuat sesi absensi.");
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            }
+        }
+    
     }//GEN-LAST:event_btnMulaiSesiActionPerformed
 
     /**
