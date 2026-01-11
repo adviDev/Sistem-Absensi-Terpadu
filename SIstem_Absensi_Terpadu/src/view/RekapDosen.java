@@ -48,9 +48,7 @@ public class RekapDosen extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         btnsumbit = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
@@ -165,47 +163,32 @@ public class RekapDosen extends javax.swing.JFrame {
         jPanel2.add(jLabel2);
         jLabel2.setBounds(480, 40, 150, 16);
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Pilih Nama");
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(280, 100, 90, 16);
-
         btnsumbit.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnsumbit.setText("Sumbit");
         jPanel2.add(btnsumbit);
-        btnsumbit.setBounds(500, 210, 72, 23);
-
-        jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jComboBox1);
-        jComboBox1.setBounds(360, 100, 160, 25);
+        btnsumbit.setBounds(500, 210, 90, 23);
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Jadwal");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(560, 100, 60, 19);
+        jLabel6.setBounds(570, 110, 60, 19);
 
         jComboBox2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pemograman Visual", "Sistem Operasi", "Manajemen & Organisasi", "Agama", "Bahasa Inggris", "Metode Numerik" }));
         jPanel2.add(jComboBox2);
-        jComboBox2.setBounds(630, 100, 170, 25);
+        jComboBox2.setBounds(640, 110, 170, 25);
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Kelas");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(280, 160, 50, 19);
+        jLabel7.setBounds(290, 110, 50, 19);
 
         jComboBox3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3A TIF", "3B TIF", "3C TIF", "3D TIF", "3E TIF" }));
         jPanel2.add(jComboBox3);
-        jComboBox3.setBounds(360, 160, 80, 25);
+        jComboBox3.setBounds(370, 110, 80, 25);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,7 +198,10 @@ public class RekapDosen extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -240,10 +226,6 @@ public class RekapDosen extends javax.swing.JFrame {
     menu.setVisible(true);
     this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_btnhomeActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -348,13 +330,11 @@ public class RekapDosen extends javax.swing.JFrame {
     private javax.swing.JButton btnhome;
     private javax.swing.JButton btnrekap;
     private javax.swing.JButton btnsumbit;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
