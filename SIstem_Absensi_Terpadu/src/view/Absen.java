@@ -113,6 +113,7 @@ public class Absen extends javax.swing.JFrame {
         cbKelas = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
+        btnsimpan1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -255,17 +256,17 @@ public class Absen extends javax.swing.JFrame {
         cbperte.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         cbperte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Minggu 1", "Minggu 2", "MInggu 3", "MInggu 4", "MInggu 5", "MInggu 6", "MInggu 7", "MInggu 8", "MInggu 9", "MInggu 10", "MInggu 11", "MInggu 12", "MInggu 13 ", "MInggu 14", "MInggu 15", "MInggu 16", "MInggu 17" }));
         jPanel2.add(cbperte);
-        cbperte.setBounds(350, 110, 108, 25);
+        cbperte.setBounds(350, 110, 107, 25);
 
         btnsimpan.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        btnsimpan.setText("Sumbit");
+        btnsimpan.setText("Simpan Absensi");
         btnsimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnsimpanActionPerformed(evt);
             }
         });
         jPanel2.add(btnsimpan);
-        btnsimpan.setBounds(720, 400, 90, 26);
+        btnsimpan.setBounds(530, 400, 140, 26);
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -287,7 +288,7 @@ public class Absen extends javax.swing.JFrame {
             }
         });
         jPanel2.add(cbKelas);
-        cbKelas.setBounds(350, 170, 81, 25);
+        cbKelas.setBounds(350, 170, 80, 25);
 
         jComboBox2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pemograman Visual", "Sistem Operasi", "Manajemen & Organisasi", "Agama", "Bahasa Inggris", "Metode Numerik" }));
@@ -303,6 +304,16 @@ public class Absen extends javax.swing.JFrame {
         });
         jPanel2.add(jButton2);
         jButton2.setBounds(470, 170, 110, 26);
+
+        btnsimpan1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnsimpan1.setText("Tutup Sesi");
+        btnsimpan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsimpan1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnsimpan1);
+        btnsimpan1.setBounds(690, 400, 120, 26);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -439,6 +450,10 @@ autoResizeKolom(tbllist);
     }
     }//GEN-LAST:event_btnsimpanActionPerformed
 
+    private void btnsimpan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsimpan1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnsimpan1ActionPerformed
+
     private int getidbynama(){
         String nama = cbKelas.getSelectedItem().toString();
         switch (nama) {
@@ -532,6 +547,7 @@ autoResizeKolom(tbllist);
     private javax.swing.JButton btnhome;
     private javax.swing.JButton btnrekap;
     private javax.swing.JButton btnsimpan;
+    private javax.swing.JButton btnsimpan1;
     private javax.swing.JComboBox<String> cbKelas;
     private javax.swing.JComboBox<String> cbperte;
     private javax.swing.JButton jButton2;
