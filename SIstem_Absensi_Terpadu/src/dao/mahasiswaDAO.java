@@ -43,7 +43,7 @@ public class mahasiswaDAO {
             if (rs.next()) {
                 m = new mahasiswa();
                 m.setNim(rs.getString("nim"));
-                m.setNim(rs.getString("nama_mahasiswa"));
+                m.setNama(rs.getString("nama_mahasiswa"));
                 m.setAngkatan(rs.getInt("angkatan"));
             }
             
