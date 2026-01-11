@@ -19,7 +19,7 @@ public class MenuMahasiswa extends javax.swing.JFrame {
     private void initbutton(){
     btnrekap.setContentAreaFilled(false);
     btnrekap.setFocusPainted(false);
-    btnrekap.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
+    btnrekap.setCursor(new Cursor(Cursor.HAND_CURSOR));     
     }
     public void getDataMhs(){
         dao.mahasiswaDAO dao = new dao.mahasiswaDAO();
@@ -51,6 +51,29 @@ public class MenuMahasiswa extends javax.swing.JFrame {
         for (String[] row : dataRiwayat) {
             model.addRow(row);
         }
+        aturLebarKolom();
+    }
+private void aturLebarKolom() {
+        // 1. Pastikan Tabel Memenuhi Lebar Layar
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+
+        // 2. Atur Kolom 0 (Tanggal) -> Kecil & Tetap
+        javax.swing.table.TableColumn colTanggal = jTable1.getColumnModel().getColumn(0);
+        colTanggal.setPreferredWidth(100);
+        colTanggal.setMinWidth(100);
+        colTanggal.setMaxWidth(100); // Kunci agar tidak melebar
+
+        // 3. Atur Kolom 2 (Status) -> Kecil & Tetap
+        javax.swing.table.TableColumn colStatus = jTable1.getColumnModel().getColumn(2);
+        colStatus.setPreferredWidth(80);
+        colStatus.setMinWidth(80);
+        colStatus.setMaxWidth(80); // Kunci agar tidak melebar
+
+        // 4. Atur Kolom 1 (Mata Kuliah) -> Fleksibel (Sisa Ruang)
+        // Kita tidak set MaxWidth, jadi dia akan mengambil sisa ruang yang ada
+        javax.swing.table.TableColumn colMatkul = jTable1.getColumnModel().getColumn(1);
+        colMatkul.setPreferredWidth(300); // Lebar dasar
+        colMatkul.setMinWidth(200);
     }
 
     /**
@@ -288,132 +311,6 @@ public class MenuMahasiswa extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MenuMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
