@@ -360,7 +360,9 @@ public class Absen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnrekapActionPerformed
 
     private void btnhomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhomeActionPerformed
-            // TODO add your handling code here:
+    MenuDosen menu = new MenuDosen(username);
+    menu.setVisible(true);
+    this.dispose();
     }//GEN-LAST:event_btnhomeActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -396,7 +398,11 @@ autoResizeKolom(tbllist);
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    private String username;
+    public Absen(String username) {
+    initComponents();
+    this.username = username;
+    }
     private void btnsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsimpanActionPerformed
       // 1. Inisialisasi List untuk menampung data
     List<model.detailAbsensi> listAbsen = new ArrayList<>();

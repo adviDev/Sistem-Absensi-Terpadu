@@ -43,7 +43,7 @@
     <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="66" red="66" type="rgb"/>
+          <Color blue="66" green="66" red="0" type="rgb"/>
         </Property>
       </Properties>
 
@@ -194,7 +194,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="350" y="250" width="380" height="160"/>
+              <AbsoluteConstraints x="330" y="250" width="430" height="160"/>
             </Constraint>
           </Constraints>
 
@@ -207,7 +207,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="6" rowCount="0">
-                    <Column editable="false" title="NIm" type="java.lang.Object"/>
+                    <Column editable="false" title="NIM" type="java.lang.Object"/>
                     <Column editable="false" title="Nama" type="java.lang.Object"/>
                     <Column editable="false" title="H" type="java.lang.Object"/>
                     <Column editable="false" title="I" type="java.lang.Object"/>
@@ -274,6 +274,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnsumbit">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="0" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="14" style="0"/>
             </Property>
@@ -281,7 +284,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="500" y="210" width="90" height="23"/>
+              <AbsoluteConstraints x="480" y="203" width="140" height="30"/>
             </Constraint>
           </Constraints>
         </Component>

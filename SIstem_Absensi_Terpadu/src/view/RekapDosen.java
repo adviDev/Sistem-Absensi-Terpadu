@@ -57,7 +57,7 @@ public class RekapDosen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setLayout(null);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/icons8-close-32.png"))); // NOI18N
@@ -133,7 +133,7 @@ public class RekapDosen extends javax.swing.JFrame {
 
             },
             new String [] {
-                "NIm", "Nama", "H", "I", "A", "S"
+                "NIM", "Nama", "H", "I", "A", "S"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -155,7 +155,7 @@ public class RekapDosen extends javax.swing.JFrame {
         }
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(350, 250, 380, 160);
+        jScrollPane1.setBounds(330, 250, 430, 160);
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -163,10 +163,11 @@ public class RekapDosen extends javax.swing.JFrame {
         jPanel2.add(jLabel2);
         jLabel2.setBounds(480, 40, 150, 16);
 
+        btnsumbit.setBackground(new java.awt.Color(0, 204, 204));
         btnsumbit.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnsumbit.setText("Sumbit");
         jPanel2.add(btnsumbit);
-        btnsumbit.setBounds(500, 210, 90, 23);
+        btnsumbit.setBounds(480, 203, 140, 30);
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
